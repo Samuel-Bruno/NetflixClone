@@ -1,0 +1,73 @@
+.wrapper {
+  padding-top: 21px;
+}
+
+.box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  max-width: 1236px;
+  height: 50px;
+  margin: auto;
+}
+
+.brandLogo {
+  width: 134px;
+  cursor: pointer;
+}
+
+.headerMenu {
+  display: flex;
+  gap: 30px;
+  align-items: stretch;
+}
+
+.selectLanguageBox {
+  background-color: rgba(0, 0, 0, .4);
+  outline: none;
+  border: 1px solid rgba(255, 255, 255, .8);
+  border-radius: 2px;
+  padding: 5px 4px 7px;
+}
+
+.selectLanguageBox::before {
+  content: "\01F310";
+  position: relative;
+  height: inherit;
+  align-items: center;
+  margin: auto 0;
+}
+
+.selectLanguageBox select {
+  background: transparent;
+  color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  height: 100%;
+  font-family: 'Netflix Sans Rg';
+  font-size: 14px;
+}
+
+.selectLanguageBox select option {
+  background-color: rgba(0, 0, 0, .4);
+  cursor: pointer;
+}
+
+
+.signInBtn {
+  background-color: #E50914;
+  border-radius: 4px;
+}
+.signInBtn a {
+  color: white;
+  text-decoration: none;
+  width: 100%;
+  display: block;
+  text-align: center;
+  font-size: 16px;
+  font-family: 'Netflix Sans Rg';
+  padding: .45em 1.1em;
+}
