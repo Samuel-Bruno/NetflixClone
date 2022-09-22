@@ -4,6 +4,7 @@ import S from './styles.module.css'
 import SignUpHeader from "../../components/headers/signUp"
 import { ReactComponent as SubscribeBtnArrow } from '../../assets/svgs/signInArrow.svg'
 import TvImage from '../../assets/images/tv.png'
+import DevicesImage from '../../assets/images/device-pile.png'
 
 
 const SignUpPage = () => {
@@ -57,7 +58,23 @@ const SignUpPage = () => {
       <section className={S.promoSection}>
       </section>
 
-      <section className={S.promoSection}>
+      <section className={S.promoSection} id="watchOnDevice">
+        <div className={S.promoSectionContainer}>
+          <div className={S.promoSectionTexts}>
+            <span className={S.promoSectionTitle}>Assita quando quiser.</span>
+            <span className={S.promoSectionDesc}>Assista no celular, tablet, Smart TV ou notebook sem pagar a mais por isso.</span>
+          </div>
+          <div className={S.promoSectionMediaArea}>
+            <div className={S.promoMediaWrapper}>
+              <img src={DevicesImage} alt="" className={S.promoImage} />
+              <div className={S.deviceVideoArea}>
+                <video className={S.promoVideo} autoPlay playsInline muted loop >
+                  <source src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/video-devices.m4v" type="video/mp4"></source>
+                </video>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section className={S.promoSection}>

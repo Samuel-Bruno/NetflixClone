@@ -192,6 +192,16 @@
   transform: translateX(-50%) translateY(-50%);
 }
 
-.promoVideoArea video {
+.deviceVideoArea {
+  position: absolute;
+  width: 61%;
+  height: auto;
+  top: 34%;
+  left: 49.5%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.promoVideoArea video,
+.deviceVideoArea video {
   width: 100%;
 }
