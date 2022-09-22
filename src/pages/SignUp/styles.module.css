@@ -149,6 +149,12 @@
   display: flex;
   flex-direction: column;
 }
+.promoSectionTextsReverse {
+  width: 52%;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+}
 
 .promoSectionTitle {
   font-family: 'Netflix Sans Md';
@@ -170,10 +176,22 @@
   flex: 0 1 auto;
   padding-left: 24px;
 }
+.promoSectionMediaAreaReverse {
+  width: 48%;
+  height: 100%;
+  display: flex;
+  flex: 0 1 auto;
+  padding-right: 24px;
+}
 
 .promoMediaWrapper {
   position: relative;
   margin: -10% -5% -5% 0;
+}
+
+.promoMediaWrapperReverse {
+  position: relative;
+  margin: -5% 0 -5% 0;
 }
 
 .promoImage {

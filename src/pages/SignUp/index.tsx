@@ -5,6 +5,7 @@ import SignUpHeader from "../../components/headers/signUp"
 import { ReactComponent as SubscribeBtnArrow } from '../../assets/svgs/signInArrow.svg'
 import TvImage from '../../assets/images/tv.png'
 import DevicesImage from '../../assets/images/device-pile.png'
+import ChildImage from '../../assets/images/child.png'
 
 
 const SignUpPage = () => {
@@ -58,7 +59,7 @@ const SignUpPage = () => {
       <section className={S.promoSection}>
       </section>
 
-      <section className={S.promoSection} id="watchOnDevice">
+      <section className={S.promoSection}>
         <div className={S.promoSectionContainer}>
           <div className={S.promoSectionTexts}>
             <span className={S.promoSectionTitle}>Assita quando quiser.</span>
@@ -78,6 +79,17 @@ const SignUpPage = () => {
       </section>
 
       <section className={S.promoSection}>
+        <div className={S.promoSectionContainer}>
+          <div className={S.promoSectionMediaAreaReverse}>
+            <div className={S.promoMediaWrapperReverse}>
+              <img src={ChildImage} alt="" className={S.promoImage} />
+            </div>
+          </div>
+          <div className={S.promoSectionTextsReverse}>
+            <span className={S.promoSectionTitle}>Crie perfis para crianças.</span>
+            <span className={S.promoSectionDesc}>Deixe as crianças se aventurarem com seus personagens favoritos em um espaço feito só para elas, sem pagar a mais por isso.</span>
+          </div>
+        </div>
       </section>
     </div>
   )
