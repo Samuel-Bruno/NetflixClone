@@ -3,6 +3,7 @@ import S from './styles.module.css'
 
 import SignUpHeader from "../../components/headers/signUp"
 import { ReactComponent as SubscribeBtnArrow } from '../../assets/svgs/signInArrow.svg'
+import TvImage from '../../assets/images/tv.png'
 
 
 const SignUpPage = () => {
@@ -19,8 +20,11 @@ const SignUpPage = () => {
             <h3>Pronto para assistir? Informe seu email para criar ou reiniciar sua assinatura.</h3>
             <div className={S.subscribeArea}>
               <div className={S.inputArea}>
-                {/* <label>Email</label> */}
-                <input type="email" name="email" className={S.subscribeInput} />
+                <input type="email" name="email" className={S.subscribeInput} placeholder=" " />
+                <label className={S.inputLabel}>Email</label>
+                <div className={S.inputError}>  {/*RegEx error*/}
+                  <span>O email é obrigatório</span>
+                </div>
               </div>
               <button className={S.subscribeBtn}>
                 <span>Vamos lá</span>
@@ -29,6 +33,34 @@ const SignUpPage = () => {
             </div>
           </div>
         </div>
+      </section>
+
+      <section className={S.promoSection}>
+        <div className={S.promoSectionContainer}>
+          <div className={S.promoSectionTexts}>
+            <span className={S.promoSectionTitle}>Aproveite na TV.</span>
+            <span className={S.promoSectionDesc}>Assista em Smart TVs, PlayStation, Xbox, Chromecast, Apple TV, aparelhos de Blu-ray e outros dispositivos.</span>
+          </div>
+          <div className={S.promoSectionMediaArea}>
+            <div className={S.promoMediaWrapper}>
+              <img src={TvImage} alt="" className={S.promoImage} />
+              <div className={S.promoVideoArea}>
+                <video className={S.promoVideo} autoPlay playsInline muted loop >
+                  <source src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/video-tv-0819.m4v" type="video/mp4"></source>
+                </video>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className={S.promoSection}>
+      </section>
+
+      <section className={S.promoSection}>
+      </section>
+
+      <section className={S.promoSection}>
       </section>
     </div>
   )

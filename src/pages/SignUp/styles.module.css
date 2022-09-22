@@ -13,11 +13,9 @@
 }
 
 .firstBrakeWrapper {
-  background: linear-gradient(
-    rgba(0,0,0,.8),
-    rgba(0,0,0,.4),
-    rgba(0,0,0,.9)
-  );
+  background: linear-gradient(rgba(0, 0, 0, .8),
+      rgba(0, 0, 0, .4),
+      rgba(0, 0, 0, .9));
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -65,27 +63,64 @@
 
 .inputArea {
   width: 450px;
+  position: relative;
+  height: 100%;
 }
-.inputArea label {
+
+.inputLabel {
   color: grey;
   position: absolute;
+  left: 10px;
+  top: 19px;
+  transition: .2s;
+  cursor: text;
 }
-.inputArea input {
+
+.subscribeInput {
   width: 100%;
   height: 100%;
-  border: none;
+  border: 1px solid #777;
   outline: none;
   text-indent: 10px;
   font-family: 'Netflix Sans Rg';
-  font-size:16px;
+  font-size: 15px;
+}
+
+.subscribeInput:focus~.inputLabel,
+.subscribeInput:not(:placeholder-shown).subscribeInput:not(:focus)~.inputLabel {
+  top: 5px;
+  font-size: 12px;
+  font-family: 'Netflix Sans Md';
+  font-weight: 500;
+}
+
+.inputError {
+  border-top: 2px solid #FFA00A;
+  position: absolute;
+  width: 100%;
+  text-align: left;
+  padding: 4px;
+  margin-top: -1px;
+  display: none;
+}
+
+.inputError span {
+  color: #FFA00A;
+  font-size: 15px;
+  font-family: 'Netflix Sans Rg';
 }
 
 .subscribeBtn {
   background-color: #E50914;
   width: 180px;
-  border:none;
+  border: none;
   outline: none;
   margin-left: 1px;
+  cursor: pointer;
+}
+
+.subscribeBtn:hover {
+  background-color: #f40612;
 }
 
 .subscribeBtn span {
@@ -93,4 +128,70 @@
   font-size: 26px;
   font-family: 'Netflix Sans Rg';
   margin-right: 8px;
+}
+
+.promoSection {
+  border-top: 8px solid #222;
+  padding: 70px 45px;
+}
+
+.promoSectionContainer {
+  display: flex;
+  max-width: 1100px;
+  justify-content: space-between;
+  margin: auto;
+  align-items: center;
+}
+
+.promoSectionTexts {
+  width: 52%;
+  padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.promoSectionTitle {
+  font-family: 'Netflix Sans Md';
+  font-size: 50px;
+  color: white;
+  margin-bottom: 14px;
+}
+
+.promoSectionDesc {
+  font-family: 'Netflix Sans Rg';
+  font-size: 26px;
+  color: white;
+}
+
+.promoSectionMediaArea {
+  width: 48%;
+  height: 100%;
+  display: flex;
+  flex: 0 1 auto;
+  padding-left: 24px;
+}
+
+.promoMediaWrapper {
+  position: relative;
+  margin: -10% -5% -5% 0;
+}
+
+.promoImage {
+  position: relative;
+  z-index: 2;
+  border: 0;
+  max-width: 100%;
+}
+
+.promoVideoArea {
+  position: absolute;
+  width: 73%;
+  height: auto;
+  top: 48%;
+  left: 49.5%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.promoVideoArea video {
+  width: 100%;
 }
