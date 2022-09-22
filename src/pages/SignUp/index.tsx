@@ -4,6 +4,9 @@ import S from './styles.module.css'
 import SignUpHeader from "../../components/headers/signUp"
 import { ReactComponent as SubscribeBtnArrow } from '../../assets/svgs/signInArrow.svg'
 import TvImage from '../../assets/images/tv.png'
+import DownloadSTImage from '../../assets/images/strangerThings_download.jpg'
+import STCover from '../../assets/images/strangerThings_downloadCover.png'
+import DownloadGif from '../../assets/images/download-icon_gif.gif'
 import DevicesImage from '../../assets/images/device-pile.png'
 import ChildImage from '../../assets/images/child.png'
 
@@ -57,6 +60,27 @@ const SignUpPage = () => {
       </section>
 
       <section className={S.promoSection}>
+        <div className={S.promoSectionContainer}>
+          <div className={S.promoSectionMediaAreaReverse} style={{ justifyContent: 'left' }}>
+            <div className={S.promoDownloadWrapper}>
+              <img src={DownloadSTImage} alt="" className={S.promoImage} />
+              <div className={S.downloadingBox}>
+                <div className={S.downloadInfo}>
+                  <img src={STCover} alt="" className={S.downloadCoverImage} />
+                  <div>
+                    <span className={S.dwlTitle}>Stranger Things</span>
+                    <span className={S.dwlStatus}>Download em andamento...</span>
+                  </div>
+                </div>
+                <img src={DownloadGif} alt="" className={S.dwlGif} />
+              </div>
+            </div>
+          </div>
+          <div className={S.promoSectionTextsReverse}>
+            <span className={S.promoSectionTitle}>Baixe séries para assistir offline.</span>
+            <span className={S.promoSectionDesc}>Salve seus títulos favoritos e sempre tenha algo para assistir.</span>
+          </div>
+        </div>
       </section>
 
       <section className={S.promoSection}>
