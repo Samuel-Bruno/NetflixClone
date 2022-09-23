@@ -3,6 +3,7 @@ import S from './styles.module.css'
 
 import SignUpHeader from "../../components/headers/signUp"
 import { ReactComponent as SubscribeBtnArrow } from '../../assets/svgs/signInArrow.svg'
+import { ReactComponent as FaqPlusIcon } from '../../assets/svgs/faq_plus.svg'
 import TvImage from '../../assets/images/tv.png'
 import DownloadSTImage from '../../assets/images/strangerThings_download.jpg'
 import STCover from '../../assets/images/strangerThings_downloadCover.png'
@@ -115,6 +116,90 @@ const SignUpPage = () => {
           </div>
         </div>
       </section>
+
+      <section className={S.faqSection}>
+        <div className={S.faqSectionContainer}>
+          <h1>Perguntas frequentes</h1>
+          <ul className={S.questionsList}>
+            <li className={S.question}>
+              <div className={S.qTop}>
+                <span className={S.qTitle}>O que é a Netflix?</span>
+                <FaqPlusIcon width={28} height={28} fill="#FFF" />
+              </div>
+              <div className={S.qAnswer}>
+                <span>A Netflix é um serviço de transmissão online que oferece uma ampla variedade de séries, filmes e documentários premiados em milhares de aparelhos conectados à internet.<br /><br />Você pode assistir a quantos filmes e séries quiser, quando e onde quiser, sem comerciais - tudo por um preço mensal bem acessível. Aqui você sempre encontra novidades. A cada semana, adicionamos novas séries e filmes.
+                </span>
+              </div>
+            </li>
+            <li className={S.question}>
+              <div className={S.qTop}>
+                <span className={S.qTitle}>Quanto custa a Netflix?</span>
+                <FaqPlusIcon width={28} height={28} fill="#FFF" />
+              </div>
+              <div className={S.qAnswer}>
+                <span>Assista à Netflix no seu celular, tablet, Smart TV, notebook ou aparelho de streaming por uma taxa mensal única. Os planos variam de R$25,90 a R$55,90 por mês. Sem contrato nem taxas extras.</span>
+              </div>
+            </li>
+            <li className={S.question}>
+              <div className={S.qTop}>
+                <span className={S.qTitle}>Onde posso assistir?</span>
+                <FaqPlusIcon width={28} height={28} fill="#FFF" />
+              </div>
+              <div className={S.qAnswer}>
+                <span>Assista onde quiser, quando quiser. Faça login com sua conta Netflix em netflix.com para começar a assistir no computador ou em qualquer aparelho conectado à Internet compatível com o aplicativo Netflix, como Smart TVs, smartphones, tablets, aparelhos de streaming e videogames.<br /><br />Você também pode baixar a sua série favorita com o aplicativo Netflix para iOS, Android ou Windows 10. Use downloads para levar a Netflix para onde quiser sem precisar de conexão com a Internet. Leve a Netflix com você para qualquer lugar.</span>
+              </div>
+            </li>
+            <li className={S.question}>
+              <div className={S.qTop}>
+                <span className={S.qTitle}>Como faço para cancelar?</span>
+                <FaqPlusIcon width={28} height={28} fill="#FFF" />
+              </div>
+              <div className={S.qAnswer}>
+                <span>A Netflix é flexível. Não há contratos nem compromissos. Você pode cancelar a sua conta na internet com apenas dois cliques. Não há taxa de cancelamento – você pode começar ou encerrar a sua assinatura a qualquer momento.</span>
+              </div>
+            </li>
+            <li className={S.question}>
+              <div className={S.qTop}>
+                <span className={S.qTitle}>O que eu posso assistir na Netflix?</span>
+                <FaqPlusIcon width={28} height={28} fill="#FFF" />
+              </div>
+              <div className={S.qAnswer}>
+                <span>A Netflix tem um grande catálogo de filmes, documentários, séries, originais Netflix premiados e muito mais. Assista o quanto quiser, quando quiser.</span>
+              </div>
+            </li>
+            <li className={S.question}>
+              <div className={S.qTop}>
+                <span className={S.qTitle}>A Netflix é adequada para crianças?</span>
+                <FaqPlusIcon width={28} height={28} fill="#FFF" />
+              </div>
+              <div className={S.qAnswer}>
+                <span>A experiência infantil da Netflix faz parte da sua assinatura para que as crianças se divirtam em seu próprio espaço com séries e filmes familiares sob a supervisão dos responsáveis.<br /><br />O recurso de controle parental, incluso nos perfis para crianças e protegido por PIN, permite restringir a classificação etária do conteúdo que as crianças podem ver e bloquear títulos específicos que você não quer que elas assistam.</span>
+              </div>
+            </li>
+          </ul>
+
+          <div className={S.emailArea}>
+            <h3>Pronto para assistir? Informe seu email para criar ou reiniciar sua assinatura.</h3>
+            <div className={S.subscribeArea}>
+              <div className={S.inputArea}>
+                <input type="email" name="email" className={S.subscribeInput} placeholder=" " />
+                <label className={S.inputLabel}>Email</label>
+                <div className={S.inputError}>  {/*RegEx error*/}
+                  <span>O email é obrigatório</span>
+                </div>
+              </div>
+              <button className={S.subscribeBtn}>
+                <span>Vamos lá</span>
+                <SubscribeBtnArrow width={20} height={20} fill="#FFF" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer className={S.footer}>
+        footer
+      </footer>
     </div>
   )
 

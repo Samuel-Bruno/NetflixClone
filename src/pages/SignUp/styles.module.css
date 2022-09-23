@@ -48,7 +48,8 @@
   margin-bottom: 30px;
 }
 
-.bannerCenter h3 {
+.bannerCenter h3,
+.emailArea h3 {
   font-size: 19px;
   font-family: 'Netflix Sans Rg';
   font-weight: 200;
@@ -130,7 +131,8 @@
   margin-right: 8px;
 }
 
-.promoSection {
+.promoSection,
+.footer {
   border-top: 8px solid #222;
   padding: 70px 45px;
 }
@@ -195,6 +197,7 @@
   position: relative;
   margin: -5% 0 -5% 0;
 }
+
 .promoDownloadWrapper {
   position: relative;
   margin: -5% 0 -5% 0;
@@ -275,4 +278,81 @@
 .dwlGif {
   width: 48px;
   margin-left: 5px;
+}
+
+
+
+.faqSection {
+  border-top: 8px solid #222;
+  padding: 70px 45px;
+}
+
+.faqSectionContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.faqSectionContainer h1 {
+  text-align: center;
+  font-family: 'Netflix Sans Md';
+  font-size: 50px;
+  font-weight: 500;
+  color: white;
+  margin-bottom: 48px;
+}
+
+.questionsList {
+  width: 815px;
+  list-style: none;
+}
+
+.question {
+  background-color: #303030;
+  color: white;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.qTop {
+  padding: 20px 24px 20px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.qTitle {
+  font-family: 'Netflix Sans Rg';
+  font-size: 26px;
+  font-weight: 400;
+}
+
+.qTop svg {
+  transform: rotate(-45deg);
+}
+
+.qAnswer {
+  border-top: 1px solid #000;
+  max-height: 0;
+  transition: max-height .3s;
+}
+
+.qAnswer span {
+  margin: 28px 32px 36px;
+  font-family: 'Netflix Sans Rg';
+  font-size: 26px;
+  font-weight: 300;
+}
+
+.emailArea {
+  margin: 50px 0 10px;
+  color: white;
+}
+
+.footer {
+  font-family: 'Netflix Sans Rg';
+  font-size: 13px;
+  color: #737373;
 }
