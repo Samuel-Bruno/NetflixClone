@@ -10,6 +10,7 @@ import STCover from '../../assets/images/strangerThings_downloadCover.png'
 import DownloadGif from '../../assets/images/download-icon_gif.gif'
 import DevicesImage from '../../assets/images/device-pile.png'
 import ChildImage from '../../assets/images/child.png'
+import { Link } from "react-router-dom"
 
 
 const SignUpPage = () => {
@@ -198,7 +199,85 @@ const SignUpPage = () => {
       </section>
 
       <footer className={S.footer}>
-        footer
+        <div className={S.footerContainer}>
+          <h6>Dúvidas? Ligue 0800 591 8942</h6>
+          <div className={S.linksArea}>
+            <div className={S.linkCol}>
+              <ul className={S.linkColList}>
+                <li className={S.footerLinkItem}>
+                  <Link to={'/'} className={S.footerLink}>Perguntas frequentes</Link>
+                </li>
+                <li className={S.footerLinkItem}>
+                  <Link to={'/'} className={S.footerLink}>Relações com investidores</Link>
+                </li>
+                <li className={S.footerLinkItem}>
+                  <Link to={'/'} className={S.footerLink}>Formas de assistir</Link>
+                </li>
+                <li className={S.footerLinkItem}>
+                  <Link to={'/'} className={S.footerLink}>Informações corporativas</Link>
+                </li>
+                <li className={S.footerLinkItem}>
+                  <Link to={'/'} className={S.footerLink}>Só na Netflix</Link>
+                </li>
+              </ul>
+            </div>
+            <div className={S.linkCol}>
+              <ul className={S.linkColList}>
+                <li className={S.footerLinkItem}>
+                  <Link to={'/'} className={S.footerLink}>Central de Ajuda</Link>
+                </li>
+                <li className={S.footerLinkItem}>
+                  <Link to={'/'} className={S.footerLink}>Carreiras</Link>
+                </li>
+                <li className={S.footerLinkItem}>
+                  <Link to={'/'} className={S.footerLink}>Termos de Uso</Link>
+                </li>
+                <li className={S.footerLinkItem}>
+                  <Link to={'/'} className={S.footerLink}>Entre em contato</Link>
+                </li>
+              </ul>
+            </div>
+            <div className={S.linkCol}>
+              <ul className={S.linkColList}>
+                <li className={S.footerLinkItem}>
+                  <Link to={'/'} className={S.footerLink}>Conta</Link>
+                </li>
+                <li className={S.footerLinkItem}>
+                  <Link to={'/'} className={S.footerLink}>Resgatar cartão pré-pago</Link>
+                </li>
+                <li className={S.footerLinkItem}>
+                  <Link to={'/'} className={S.footerLink}>Privacidade</Link>
+                </li>
+                <li className={S.footerLinkItem}>
+                  <Link to={'/'} className={S.footerLink}>Text de velocidade</Link>
+                </li>
+              </ul>
+            </div>
+            <div className={S.linkCol}>
+              <ul className={S.linkColList}>
+                <li className={S.footerLinkItem}>
+                  <Link to={'/'} className={S.footerLink}>Media Center</Link>
+                </li>
+                <li className={S.footerLinkItem}>
+                  <Link to={'/'} className={S.footerLink}>Comprar cartão pré-pago</Link>
+                </li>
+                <li className={S.footerLinkItem}>
+                  <Link to={'/'} className={S.footerLink}>Preferências de cookies</Link>
+                </li>
+                <li className={S.footerLinkItem}>
+                  <Link to={'/'} className={S.footerLink}>Avisos legais</Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className={S.selectLanguageBox}>
+            <select name="language" id="languageSelect">
+              <option value="pt-br" selected>Português</option>
+              <option value="en-us">English</option>
+            </select>
+          </div>
+          <span className={S.footerBrandName}>Netflix Brasil</span>
+        </div>
       </footer>
     </div>
   )
