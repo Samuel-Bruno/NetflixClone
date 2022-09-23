@@ -1,0 +1,117 @@
+.footer {
+  border-top: 8px solid #222;
+  font-family: 'Netflix Sans Rg';
+  font-size: 13px;
+  color: #737373;
+}
+
+.footerContainer {
+  width: 100%;
+  max-width: 980px;
+  padding: 70px 45px 35px;
+  margin: auto;
+}
+
+.footerContainer h6 {
+  font-size: 16px;
+  font-family: 'Netflix Sans Rg';
+  font-weight: 300;
+}
+
+.footerContainer h6 a {
+  text-decoration: none;
+  color: #737373;
+  font-size: 16px;
+  font-family: 'Netflix Sans Rg';
+  font-weight: 300;
+}
+
+.footerContainer h6 a:hover {
+  text-decoration: underline;
+}
+
+.linksArea {
+  display: flex;
+  margin: 16px 0 20px 0;
+}
+
+.linkCol {
+  flex: 1;
+}
+
+.linkColList {
+  list-style: none;
+}
+
+.footerLinkItem {
+  margin: 15px 0;
+}
+
+.footerLink {
+  color: #737373;
+  text-decoration: none;
+  font-family: 'Netflix Sans Rg';
+}
+
+.footerLink:hover {
+  text-decoration: underline;
+}
+
+.selectLanguageBox {
+  background-color: rgb(0, 0, 0);
+  border-radius: 2px;
+  width: fit-content;
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.selectLanguageBox::before {
+  content: "\e896";
+  font-family: 'Netflix Icon';
+  font-size: 16px;
+  top: 2px;
+  color: #999;
+  position: absolute;
+  align-items: center;
+  margin-left: 15px;
+  top: 15px;
+}
+
+.selectLanguageBox::after {
+  content: "\e898";
+  font-family: 'Netflix Icon';
+  font-size: 6px;
+  top: 2px;
+  color: #999;
+  position: absolute;
+  align-items: center;
+  right: 11px;
+  top: 22px;
+}
+
+.selectLanguageBox select {
+  background: transparent;
+  color: #999;
+  outline: none;
+  line-height: 1.7;
+  border: 1px solid rgb(115, 115, 115, .5);
+  padding: 12px 26px 12px 50px;
+  cursor: pointer;
+  height: 100%;
+  font-family: 'Netflix Sans Rg';
+  font-size: 16px;
+  -webkit-appearance: none;
+  width: 100%;
+  text-indent: 0;
+}
+
+.selectLanguageBox select option {
+  background-color: rgb(0, 0, 0);
+  width: 100%;
+  cursor: pointer;
+}
+
+.footerBrandName {
+  font-family: 'Netflix Sans Rg';
+  font-weight: 300;
+}

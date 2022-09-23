@@ -5,7 +5,7 @@ import S from './styles.module.css'
 import { ReactComponent as Logo } from '../../assets/svgs/brandLogo.svg'
 
 
-const SignUpHeader = () => {
+function SignUpHeader() {
 
 
   return (

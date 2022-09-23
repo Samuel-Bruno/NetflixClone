@@ -1,0 +1,36 @@
+.question {
+  background-color: #303030;
+  color: white;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.qTop {
+  padding: 20px 24px 20px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.qTitle {
+  font-family: 'Netflix Sans Rg';
+  font-size: 26px;
+  font-weight: 400;
+}
+
+.qTop svg {
+  transform: rotate(-45deg);
+}
+
+.qAnswer {
+  border-top: 1px solid #000;
+  max-height: 0;
+  transition: max-height .3s;
+}
+
+.qAnswer span {
+  margin: 28px 32px 36px;
+  font-family: 'Netflix Sans Rg';
+  font-size: 26px;
+  font-weight: 300;
+}
