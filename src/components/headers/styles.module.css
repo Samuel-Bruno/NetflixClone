@@ -28,16 +28,30 @@
   background-color: rgba(0, 0, 0, .4);
   outline: none;
   border: 1px solid rgba(255, 255, 255, .8);
-  border-radius: 2px;
-  padding: 5px 4px 7px;
+  border-radius: 1px;
+  position: relative;
 }
 
 .selectLanguageBox::before {
-  content: "\01F310";
-  position: relative;
+  content: "\e896";
+  position: absolute;
   height: inherit;
   align-items: center;
-  margin: auto 0;
+  color: #FFF;
+  font-size: 12px;
+  left:7px;
+  top: 9px;
+}
+.selectLanguageBox::after {
+  content: "\e898";
+  font-family: 'Netflix Icon';
+  font-size: 6px;
+  top: 2px;
+  color: #FFF;
+  position: absolute;
+  align-items: center;
+  right: 9px;
+  top: 12px;
 }
 
 .selectLanguageBox select {
@@ -45,10 +59,12 @@
   color: white;
   border: none;
   outline: none;
+  padding: 9px 22px;
   cursor: pointer;
   height: 100%;
   font-family: 'Netflix Sans Rg';
   font-size: 14px;
+  -webkit-appearance: none;
 }
 
 .selectLanguageBox select option {
