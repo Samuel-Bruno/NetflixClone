@@ -1,7 +1,7 @@
 import React from 'react'
-import { ReactComponent as FaqPlusIcon } from '../../assets/svgs/faq_plus.svg'
+import * as S from './styles'
 
-import S from './styles.module.css'
+import { ReactComponent as FaqPlusIcon } from '../../assets/svgs/faq_plus.svg'
 
 type Props = {
   title: string;
@@ -13,15 +13,15 @@ function FaqQuestion({ title, answer }: Props) {
 
 
   return (
-    <li className={S.question}>
-      <div className={S.qTop}>
-        <span className={S.qTitle}>{title}</span>
+    <S.Question>
+      <S.QTop>
+        <S.QTitle>{title}</S.QTitle>
         <FaqPlusIcon width={28} height={28} fill="#FFF" />
-      </div>
-      <div className={S.qAnswer}>
+      </S.QTop>
+      <S.QAnswer opened={false}>
         <span>{answer}</span>
-      </div>
-    </li>
+      </S.QAnswer>
+    </S.Question>
   )
 
 }

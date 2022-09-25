@@ -1,93 +1,94 @@
 import React from 'react'
+import * as S from './styles'
+
 import { Link } from 'react-router-dom'
-import S from './styles.module.css'
 
 
-function SignUpFooter () {
+function SignUpFooter() {
 
 
   return (
-    <footer className={S.footer}>
-      <div className={S.footerContainer}>
+    <S.Footer>
+      <S.FooterContainer>
         <h6>Dúvidas? Ligue <Link to={'tel:0800 591 8942'}>0800 591 8942</Link></h6>
-        <div className={S.linksArea}>
-          <div className={S.linkCol}>
-            <ul className={S.linkColList}>
-              <li className={S.footerLinkItem}>
-                <Link to={'/'} className={S.footerLink}>Perguntas frequentes</Link>
-              </li>
-              <li className={S.footerLinkItem}>
-                <Link to={'/'} className={S.footerLink}>Relações com investidores</Link>
-              </li>
-              <li className={S.footerLinkItem}>
-                <Link to={'/'} className={S.footerLink}>Formas de assistir</Link>
-              </li>
-              <li className={S.footerLinkItem}>
-                <Link to={'/'} className={S.footerLink}>Informações corporativas</Link>
-              </li>
-              <li className={S.footerLinkItem}>
-                <Link to={'/'} className={S.footerLink}>Só na Netflix</Link>
-              </li>
-            </ul>
-          </div>
-          <div className={S.linkCol}>
-            <ul className={S.linkColList}>
-              <li className={S.footerLinkItem}>
-                <Link to={'/'} className={S.footerLink}>Central de Ajuda</Link>
-              </li>
-              <li className={S.footerLinkItem}>
-                <Link to={'/'} className={S.footerLink}>Carreiras</Link>
-              </li>
-              <li className={S.footerLinkItem}>
-                <Link to={'/'} className={S.footerLink}>Termos de Uso</Link>
-              </li>
-              <li className={S.footerLinkItem}>
-                <Link to={'/'} className={S.footerLink}>Entre em contato</Link>
-              </li>
-            </ul>
-          </div>
-          <div className={S.linkCol}>
-            <ul className={S.linkColList}>
-              <li className={S.footerLinkItem}>
-                <Link to={'/'} className={S.footerLink}>Conta</Link>
-              </li>
-              <li className={S.footerLinkItem}>
-                <Link to={'/'} className={S.footerLink}>Resgatar cartão pré-pago</Link>
-              </li>
-              <li className={S.footerLinkItem}>
-                <Link to={'/'} className={S.footerLink}>Privacidade</Link>
-              </li>
-              <li className={S.footerLinkItem}>
-                <Link to={'/'} className={S.footerLink}>Text de velocidade</Link>
-              </li>
-            </ul>
-          </div>
-          <div className={S.linkCol}>
-            <ul className={S.linkColList}>
-              <li className={S.footerLinkItem}>
-                <Link to={'/'} className={S.footerLink}>Media Center</Link>
-              </li>
-              <li className={S.footerLinkItem}>
-                <Link to={'/'} className={S.footerLink}>Comprar cartão pré-pago</Link>
-              </li>
-              <li className={S.footerLinkItem}>
-                <Link to={'/'} className={S.footerLink}>Preferências de cookies</Link>
-              </li>
-              <li className={S.footerLinkItem}>
-                <Link to={'/'} className={S.footerLink}>Avisos legais</Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div className={S.selectLanguageBox}>
-          <select name="language" id="languageSelect">
-            <option value="pt-br" selected>Português</option>
-            <option value="en-us">English</option>
-          </select>
-        </div>
-        <span className={S.footerBrandName}>Netflix Brasil</span>
-      </div>
-    </footer>
+        <S.LinksArea>
+          <S.LinkCol>
+            <S.LinkColList>
+              <S.FooterLinkItem>
+                <Link to={'/'}>Perguntas frequentes</Link>
+              </S.FooterLinkItem>
+              <S.FooterLinkItem>
+                <Link to={'/'}>Relações com investidores</Link>
+              </S.FooterLinkItem>
+              <S.FooterLinkItem>
+                <Link to={'/'}>Formas de assistir</Link>
+              </S.FooterLinkItem>
+              <S.FooterLinkItem>
+                <Link to={'/'}>Informações corporativas</Link>
+              </S.FooterLinkItem>
+              <S.FooterLinkItem>
+                <Link to={'/'}>Só na Netflix</Link>
+              </S.FooterLinkItem>
+            </S.LinkColList>
+          </S.LinkCol>
+          <S.LinkCol>
+            <S.LinkColList>
+              <S.FooterLinkItem>
+                <Link to={'/'}>Central de Ajuda</Link>
+              </S.FooterLinkItem>
+              <S.FooterLinkItem>
+                <Link to={'/'}>Carreiras</Link>
+              </S.FooterLinkItem>
+              <S.FooterLinkItem>
+                <Link to={'/'}>Termos de Uso</Link>
+              </S.FooterLinkItem>
+              <S.FooterLinkItem>
+                <Link to={'/'}>Entre em contato</Link>
+              </S.FooterLinkItem>
+            </S.LinkColList>
+          </S.LinkCol>
+          <S.LinkCol>
+            <S.LinkColList>
+              <S.FooterLinkItem>
+                <Link to={'/'}>Conta</Link>
+              </S.FooterLinkItem>
+              <S.FooterLinkItem>
+                <Link to={'/'}>Resgatar cartão pré-pago</Link>
+              </S.FooterLinkItem>
+              <S.FooterLinkItem>
+                <Link to={'/'}>Privacidade</Link>
+              </S.FooterLinkItem>
+              <S.FooterLinkItem>
+                <Link to={'/'}>Text de velocidade</Link>
+              </S.FooterLinkItem>
+            </S.LinkColList>
+          </S.LinkCol>
+          <S.LinkCol>
+            <S.LinkColList>
+              <S.FooterLinkItem>
+                <Link to={'/'}>Media Center</Link>
+              </S.FooterLinkItem>
+              <S.FooterLinkItem>
+                <Link to={'/'}>Comprar cartão pré-pago</Link>
+              </S.FooterLinkItem>
+              <S.FooterLinkItem>
+                <Link to={'/'}>Preferências de cookies</Link>
+              </S.FooterLinkItem>
+              <S.FooterLinkItem>
+                <Link to={'/'}>Avisos legais</Link>
+              </S.FooterLinkItem>
+            </S.LinkColList>
+          </S.LinkCol>
+        </S.LinksArea>
+        <S.SelectLanguageBox>
+          <S.Select name="language" id="languageSelect">
+            <S.Option value="pt-br" selected>Português</S.Option>
+            <S.Option value="en-us">English</S.Option>
+          </S.Select>
+        </S.SelectLanguageBox>
+        <S.FooterBrandName>Netflix Brasil</S.FooterBrandName>
+      </S.FooterContainer>
+    </S.Footer>
   )
 
 }

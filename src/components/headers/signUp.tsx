@@ -1,6 +1,7 @@
 import React from "react"
+import * as S from './styles'
+
 import { Link } from 'react-router-dom'
-import S from './styles.module.css'
 
 import { ReactComponent as Logo } from '../../assets/svgs/brandLogo.svg'
 
@@ -9,22 +10,22 @@ function SignUpHeader() {
 
 
   return (
-    <header className={S.wrapper}>
-      <div className={S.box}>
-        <Logo className={S.brandLogo} fill={'#E50914'} />
-        <div className={S.headerMenu}>
-          <div className={S.selectLanguageBox}>
-            <select name="language" id="languageSelect">
-              <option value="pt-br" selected>Português</option>
-              <option value="en-us">English</option>
-            </select>
-          </div>
-          <div className={S.signInBtn}>
+    <S.Wrapper>
+      <S.Box>
+        <Logo fill={'#E50914'} />
+        <S.HeaderMenu>
+          <S.SelectLanguageBox>
+            <S.Select name="language" id="languageSelect">
+              <S.Option value="pt-br" selected>Português</S.Option>
+              <S.Option value="en-us">English</S.Option>
+            </S.Select>
+          </S.SelectLanguageBox>
+          <S.SignInBtn>
             <Link to={'/login'}>Entrar</Link>
-          </div>
-        </div>
-      </div>
-    </header>
+          </S.SignInBtn>
+        </S.HeaderMenu>
+      </S.Box>
+    </S.Wrapper>
   )
 
 }

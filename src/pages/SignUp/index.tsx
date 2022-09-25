@@ -1,5 +1,5 @@
 import React from "react"
-import S from './styles.module.css'
+import * as S from './styles'
 
 import SignUpHeader from "../../components/headers/signUp"
 import SignUpEmailSubscribe from "../../components/SignUpEmailSubscribe"
@@ -15,17 +15,17 @@ function SignUpPage() {
 
 
   return (
-    <div className={S.page}>
-      <section className={S.firstBrake}>
-        <div className={S.firstBrakeWrapper}>
+    <S.Page>
+      <S.FirstBrake>
+        <S.FirstBrakeWrapper>
           <SignUpHeader />
-          <div className={S.bannerCenter}>
+          <S.BannerCenter>
             <h1>Filmes, séries e muito mais. Sem limites.</h1>
             <h2>Assista onde quiser. Cancele quando quiser.</h2>
             <SignUpEmailSubscribe />
-          </div>
-        </div>
-      </section>
+          </S.BannerCenter>
+        </S.FirstBrakeWrapper>
+      </S.FirstBrake>
 
       <SignUpPromoSection title="Aproveite na TV."
         desc="Assista em Smart TVs, PlayStation, Xbox, Chromecast, Apple TV, aparelhos de Blu-ray e outros dispositivos."
@@ -53,10 +53,10 @@ function SignUpPage() {
         reverse={true}
       />
 
-      <section className={S.faqSection}>
-        <div className={S.faqSectionContainer}>
+      <S.FaqSection>
+        <S.FaqSectionContainer>
           <h1>Perguntas frequentes</h1>
-          <ul className={S.questionsList}>
+          <S.QuestionsList>
             <FaqQuestion title="O que é a Netflix?"
               answer="A Netflix é um serviço de transmissão online que oferece uma ampla variedade de séries, filmes e documentários premiados em milhares de aparelhos conectados à internet.<br /><br />Você pode assistir a quantos filmes e séries quiser, quando e onde quiser, sem comerciais - tudo por um preço mensal bem acessível. Aqui você sempre encontra novidades. A cada semana, adicionamos novas séries e filmes."
             />
@@ -75,17 +75,17 @@ function SignUpPage() {
             <FaqQuestion title="A Netflix é adequada para crianças?"
               answer="A experiência infantil da Netflix faz parte da sua assinatura para que as crianças se divirtam em seu próprio espaço com séries e filmes familiares sob a supervisão dos responsáveis.<br /><br />O recurso de controle parental, incluso nos perfis para crianças e protegido por PIN, permite restringir a classificação etária do conteúdo que as crianças podem ver e bloquear títulos específicos que você não quer que elas assistam."
             />
-          </ul>
+          </S.QuestionsList>
 
-          <div className={S.emailArea}>
+          <S.EmailArea>
             <SignUpEmailSubscribe />
-          </div>
-        </div>
-      </section>
+          </S.EmailArea>
+        </S.FaqSectionContainer>
+      </S.FaqSection>
 
       <SignUpFooter />
 
-    </div>
+    </S.Page>
   )
 
 }

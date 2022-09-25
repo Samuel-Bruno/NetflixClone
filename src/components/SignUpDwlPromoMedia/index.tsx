@@ -1,6 +1,6 @@
 import React from 'react'
 
-import S from './styles.module.css'
+import * as S from './styles'
 
 import DownloadSTImage from '../../assets/images/strangerThings_download.jpg'
 import STCover from '../../assets/images/strangerThings_downloadCover.png'
@@ -10,19 +10,19 @@ function SignUpDwlPromoMedia() {
 
 
   return (
-    <div className={S.promoDownloadWrapper}>
-      <img src={DownloadSTImage} alt="" className={S.promoImage} />
-      <div className={S.downloadingBox}>
-        <div className={S.downloadInfo}>
-          <img src={STCover} alt="" className={S.downloadCoverImage} />
+    <S.PromoDownloadWrapper>
+      <S.PromoImage src={DownloadSTImage} alt="" />
+      <S.DownloadingBox>
+        <S.DownloadInfo>
+          <S.DownloadCoverImage src={STCover} alt="" />
           <div>
-            <span className={S.dwlTitle}>Stranger Things</span>
-            <span className={S.dwlStatus}>Download em andamento...</span>
+            <S.DownloadCoverImage>Stranger Things</S.DownloadCoverImage>
+            <S.DwlStatus>Download em andamento...</S.DwlStatus>
           </div>
-        </div>
-        <img src={DownloadGif} alt="" className={S.dwlGif} />
-      </div>
-    </div>
+        </S.DownloadInfo>
+        <S.DwlGif src={DownloadGif} alt="" />
+      </S.DownloadingBox>
+    </S.PromoDownloadWrapper>
   )
 
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import SignUpDwlPromoMedia from '../SignUpDwlPromoMedia';
 
-import S from './styles.module.css'
+import * as S from './styles'
 
 type Props = {
   title: string;
@@ -17,46 +17,46 @@ function SignUpPromoSection({ title, desc, img, reverse, video, dwlMediaAnimatio
 
 
   return (
-    <section className={S.promoSection}>
-      <div className={S.promoSectionContainer}>
+    <S.PromoSection>
+      <S.PromoSectionContainer>
         {reverse &&
           <>
-            <div className={S.promoSectionMediaAreaReverse}>
+            <S.PromoSectionMediaArea reverse>
               {dwlMediaAnimation && <SignUpDwlPromoMedia />}
               {!dwlMediaAnimation &&
-                <div className={S.promoMediaWrapperReverse}>
-                  <img src={img} alt="" className={S.promoImage} />
-                </div>
+                <S.PromoMediaWrapper reverse>
+                  <S.PromoImage src={img} alt="" />
+                </S.PromoMediaWrapper>
               }
-            </div>
-            <div className={S.promoSectionTextsReverse}>
-              <span className={S.promoSectionTitle}>{title}</span>
-              <span className={S.promoSectionDesc}>{desc}</span>
-            </div>
+            </S.PromoSectionMediaArea>
+            <S.PromoSectionTexts reverse>
+              <>{title}</>
+              <S.PromoSectionDesc>{desc}</S.PromoSectionDesc>
+            </S.PromoSectionTexts>
           </>
         }
         {reverse === false &&
           <>
-            <div className={S.promoSectionTexts}>
-              <span className={S.promoSectionTitle}>{title}</span>
-              <span className={S.promoSectionDesc}>{desc}</span>
-            </div>
-            <div className={S.promoSectionMediaArea}>
-              <div className={S.promoMediaWrapper}>
-                <img src={img} alt="" className={S.promoImage} />
+            <S.PromoSectionTexts>
+              <S.PromoSectionTitle>{title}</S.PromoSectionTitle>
+              <S.PromoSectionDesc>{desc}</S.PromoSectionDesc>
+            </S.PromoSectionTexts>
+            <S.PromoSectionMediaArea>
+              <S.PromoMediaWrapper>
+                <S.PromoImage src={img} alt="" />
                 {video !== undefined &&
-                  <div className={S.promoVideoArea}>
-                    <video className={S.promoVideo} autoPlay playsInline muted loop >
+                  <S.PromoVideoArea>
+                    <video autoPlay playsInline muted loop >
                       <source src={video} type="video/mp4"></source>
                     </video>
-                  </div>
+                  </S.PromoVideoArea>
                 }
-              </div>
-            </div>
+              </S.PromoMediaWrapper>
+            </S.PromoSectionMediaArea>
           </>
         }
-      </div>
-    </section>
+      </S.PromoSectionContainer>
+    </S.PromoSection>
   )
 
 }
