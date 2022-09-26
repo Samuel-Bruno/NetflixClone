@@ -16,7 +16,7 @@ function SignUpDwlPromoMedia() {
         <S.DownloadInfo>
           <S.DownloadCoverImage src={STCover} alt="" />
           <div>
-            <S.DownloadCoverImage>Stranger Things</S.DownloadCoverImage>
+            <S.DwlTitle>Stranger Things</S.DwlTitle>
             <S.DwlStatus>Download em andamento...</S.DwlStatus>
           </div>
         </S.DownloadInfo>

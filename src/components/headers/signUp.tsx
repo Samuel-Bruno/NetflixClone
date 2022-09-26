@@ -15,8 +15,8 @@ function SignUpHeader() {
         <Logo fill={'#E50914'} />
         <S.HeaderMenu>
           <S.SelectLanguageBox>
-            <S.Select name="language" id="languageSelect">
-              <S.Option value="pt-br" selected>Português</S.Option>
+            <S.Select name="language" id="languageSelect" defaultValue={'pt-br'}>
+              <S.Option value="pt-br">Português</S.Option>
               <S.Option value="en-us">English</S.Option>
             </S.Select>
           </S.SelectLanguageBox>
