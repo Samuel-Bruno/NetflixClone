@@ -3,7 +3,7 @@ import * as S from './styles'
 
 import { Link } from 'react-router-dom'
 
-import { ReactComponent as Logo } from '../../assets/svgs/brandLogo.svg'
+import { ReactComponent as Logo } from '../../../assets/svgs/brandLogo.svg'
 
 
 function SignUpHeader() {

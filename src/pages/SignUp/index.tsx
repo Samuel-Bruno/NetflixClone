@@ -1,11 +1,11 @@
 import React from "react"
 import * as S from './styles'
 
-import SignUpHeader from "../../components/headers/signUp"
+import SignUpHeader from "../../components/_headers/SignUp"
 import SignUpEmailSubscribe from "../../components/SignUpEmailSubscribe"
 import SignUpPromoSection from "../../components/SignUpPromoSection"
 import FaqQuestion from "../../components/faqQuestion"
-import SignUpFooter from "../../components/footers/SignUp"
+import SignUpFooter from "../../components/_footers/SignUp"
 
 import TvImage from '../../assets/images/tv.png'
 import ChildImage from '../../assets/images/child.png'
