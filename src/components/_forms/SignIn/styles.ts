@@ -180,6 +180,10 @@ export const SignNowArea = styled.span`
     text-decoration:none;
     font-family:"Netflix Sans Rg";
     font-weight:300;
+
+    &:hover {
+      text-decoration:underline;
+    }
   }
 `
 
@@ -193,5 +197,9 @@ export const CaptchaArea = styled.span`
     text-decoration:none;
     font-family:"Netflix Sans Rg";
     font-weight:300;
+
+    &:hover {
+      text-decoration:underline;
+    }
   }
 `

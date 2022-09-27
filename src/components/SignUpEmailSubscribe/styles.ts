@@ -70,6 +70,9 @@ export const SubscribeBtn = styled.div`{
   outline: none;
   margin-left: 1px;
   cursor: pointer;
+  display:flex;
+  justify-content: center;
+  align-items: center;
 
   &:hover {
     background-color: #f40612;
