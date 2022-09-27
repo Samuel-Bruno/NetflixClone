@@ -91,13 +91,20 @@ export const InputError = styled.div<{ showing: boolean }>`
 export const SignInBtn = styled.button`
   background-color:#E50914;
   border-radius:4px;
-  width:100%;
-  padding:14px;
-  font-size:16px;
-  color:white;
   border:none;
   outline:none;
+  width:100%;
   margin-bottom:12px;
+
+  a {
+    display:block;
+    padding:14px;
+    color:white;
+    text-decoration:none;
+    font-size:16px;
+    width:100%;
+    height:100%;
+  }
 `
 
 export const FormOptions = styled.div`

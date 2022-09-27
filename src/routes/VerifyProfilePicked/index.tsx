@@ -1,7 +1,3 @@
-import React from 'react'
-import ChooseProfilePage from '../../pages/ChooseProfile'
-
-
 type Props = {
   ChooseProfilePg: JSX.Element;
   InitialPage: JSX.Element;

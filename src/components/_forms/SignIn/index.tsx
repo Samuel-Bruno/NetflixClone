@@ -27,7 +27,9 @@ function SignInForm() {
             </S.InputError>
           </S.InputArea>
         </S.InputsArea>
-        <S.SignInBtn>Entrar</S.SignInBtn>
+        <S.SignInBtn>
+          <Link to={'/browse'}>Entrar</Link>
+        </S.SignInBtn>
         <S.FormOptions>
           <S.RememberCheckbox type={'checkbox'} value={'Lembre-se de mim'} id={'remember_checkbx'} />
           <S.RememberLabel htmlFor={'remember_checkbx'}>
