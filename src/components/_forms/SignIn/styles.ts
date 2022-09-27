@@ -187,4 +187,11 @@ export const CaptchaArea = styled.span`
   font-family:"Netflix Sans Rg";
   font-weight:300;
   font-size:13px;
+
+  a {
+    color:blue;
+    text-decoration:none;
+    font-family:"Netflix Sans Rg";
+    font-weight:300;
+  }
 `
