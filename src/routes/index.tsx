@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import SignUpPage from '../pages/SignUp'
 import SignInPage from '../pages/SignIn'
 import ChooseProfilePage from '../pages/ChooseProfile'
+import HomePage from '../pages/Home'
 import VerifyProfilePicked from './VerifyProfilePicked'
 
 
@@ -14,7 +15,7 @@ const AppRoutes = () => {
       <Route path='/login' element={<SignInPage />} />
       <Route path='/browse' element={<VerifyProfilePicked
         ChooseProfilePg={<ChooseProfilePage />}
-        InitialPage={<div>Initial Page</div>}
+        InitialPage={<HomePage />}
       />} />
     </Routes>
   )

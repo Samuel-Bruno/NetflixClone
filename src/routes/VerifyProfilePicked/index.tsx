@@ -6,7 +6,7 @@ type Props = {
 
 function VerifyProfilePicked({ ChooseProfilePg, InitialPage }: Props) {
 
-  const profileAlreadyPicked = false
+  const profileAlreadyPicked = true
 
 
   return (profileAlreadyPicked) ? InitialPage : ChooseProfilePg
