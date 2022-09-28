@@ -1,35 +1,35 @@
 import styled from 'styled-components'
 
 
-export const Title = styled.h3`{
+export const Title = styled.h3`
   font-size: 19px;
   font-family: 'Netflix Sans Rg';
   font-weight: 200;
   margin-bottom: 20px;
-}`
+`
 
-export const SubscribeArea = styled.div`{
+export const SubscribeArea = styled.div`
   display: flex;
   align-items: stretch;
   height: 60px;
-}`
+`
 
-export const InputArea = styled.div`{
+export const InputArea = styled.div`
   width: 450px;
   position: relative;
   height: 100%;
-}`
+`
 
-export const InputLabel = styled.label`{
+export const InputLabel = styled.label`
   color: grey;
   position: absolute;
   left: 10px;
   top: 19px;
   transition: .2s;
   cursor: text;
-}`
+`
 
-export const SubscribeInput = styled.input`{
+export const SubscribeInput = styled.input`
   width: 100%;
   height: 100%;
   border: 1px solid #777;
@@ -45,9 +45,9 @@ export const SubscribeInput = styled.input`{
     font-family: 'Netflix Sans Md';
     font-weight: 500;
   }
-}`
+`
 
-export const InputError = styled.div`{
+export const InputError = styled.div`
   border-top: 2px solid #FFA00A;
   position: absolute;
   width: 100%;
@@ -61,9 +61,9 @@ export const InputError = styled.div`{
     font-size: 15px;
     font-family: 'Netflix Sans Rg';
   }
-}`
+`
 
-export const SubscribeBtn = styled.div`{
+export const SubscribeBtn = styled.div`
   background-color: #E50914;
   width: 180px;
   border: none;
@@ -84,4 +84,4 @@ export const SubscribeBtn = styled.div`{
     font-family: 'Netflix Sans Rg';
     margin-right: 8px;
   }
-}`
+`

@@ -1,14 +1,14 @@
 import styled from 'styled-components'
 
 
-export const Footer = styled.footer`{
+export const Footer = styled.footer`
   font-family: 'Netflix Sans Rg';
   font-size: 13px;
   color: #737373;
   background-color:rgba(0,0,0,.8);
-}`
+`
 
-export const FooterContainer = styled.div`{
+export const FooterContainer = styled.div`
   width: 100%;
   max-width: 1090px;
   padding: 30px 45px 50px;
@@ -31,23 +31,23 @@ export const FooterContainer = styled.div`{
       }
     }
   }
-}`
+`
 
 
-export const LinksArea = styled.div`{
+export const LinksArea = styled.div`
   display: flex;
   margin: 16px 0 20px 0;
-}`
+`
 
-export const LinkCol = styled.div`{
+export const LinkCol = styled.div`
   flex: 1;
-}`
+`
 
-export const LinkColList = styled.ul`{
+export const LinkColList = styled.ul`
   list-style: none;
-}`
+`
 
-export const FooterLinkItem = styled.li`{
+export const FooterLinkItem = styled.li`
   margin: 15px 0;
 
   a {
@@ -59,9 +59,9 @@ export const FooterLinkItem = styled.li`{
       text-decoration: underline;
     }
   }
-}`
+`
 
-export const SelectLanguageBox = styled.div`{
+export const SelectLanguageBox = styled.div`
   background-color: rgb(0, 0, 0);
   border-radius: 2px;
   width: fit-content;
@@ -90,9 +90,9 @@ export const SelectLanguageBox = styled.div`{
     right: 11px;
     top: 22px;
   }
-}`
+`
 
-export const Select = styled.select`{
+export const Select = styled.select`
   background: transparent;
   color: #999;
   outline: none;
@@ -106,10 +106,10 @@ export const Select = styled.select`{
   -webkit-appearance: none;
   width: 100%;
   text-indent: 0;
-}`
+`
 
-export const Option = styled.option`{
+export const Option = styled.option`
   background-color: rgb(0, 0, 0);
   width: 100%;
   cursor: pointer;
-}`
+`

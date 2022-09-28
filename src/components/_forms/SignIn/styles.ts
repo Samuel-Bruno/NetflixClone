@@ -1,13 +1,13 @@
 import styled from "styled-components"
 
 
-export const Box = styled.div`{
+export const Box = styled.div`
   padding: 57px 68px;
   margin: 20px auto 90px;
   background-color:rgba(0,0,0,.7);
   border-radius:4px;
   max-width:450px;
-}`
+`
 
 export const FormTitle = styled.h1`
   font-size:32px;

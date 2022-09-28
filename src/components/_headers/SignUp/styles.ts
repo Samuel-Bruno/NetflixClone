@@ -1,11 +1,11 @@
 import styled from "styled-components"
 
 
-export const Wrapper = styled.header`{
+export const Wrapper = styled.header`
   padding-top: 21px;
-}`
+`
 
-export const Box = styled.div`{
+export const Box = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -19,15 +19,15 @@ export const Box = styled.div`{
     width: 134px;
     cursor: pointer;
   }
-}`
+`
 
-export const HeaderMenu = styled.div`{
+export const HeaderMenu = styled.div`
   display: flex;
   gap: 30px;
   align-items: stretch;
-}`
+`
 
-export const SelectLanguageBox = styled.div`{
+export const SelectLanguageBox = styled.div`
   background-color: rgba(0, 0, 0, .4);
   outline: none;
   border: 1px solid rgba(255, 255, 255, .8);
@@ -56,9 +56,9 @@ export const SelectLanguageBox = styled.div`{
     right: 9px;
     top: 12px;
   }
-}`
+`
 
-export const Select = styled.select`{
+export const Select = styled.select`
   background: transparent;
   color: white;
   border: none;
@@ -69,15 +69,15 @@ export const Select = styled.select`{
   font-family: 'Netflix Sans Rg';
   font-size: 14px;
   -webkit-appearance: none;
-}`
+`
 
-export const Option = styled.option`{
+export const Option = styled.option`
   background-color: rgba(0, 0, 0, .4);
   cursor: pointer;
-}`
+`
 
 
-export const SignInBtn = styled.div`{
+export const SignInBtn = styled.div`
   background-color: #E50914;
   border-radius: 4px;
 
@@ -91,4 +91,4 @@ export const SignInBtn = styled.div`{
     font-family: 'Netflix Sans Rg';
     padding: .45em 1.1em;
   }
-}`
+`

@@ -1,11 +1,11 @@
 import styled from "styled-components"
 
 
-export const Wrapper = styled.header`{
+export const Wrapper = styled.header`
   padding-top: 22px;
-}`
+`
 
-export const Box = styled.div`{
+export const Box = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -21,4 +21,4 @@ export const Box = styled.div`{
       cursor: pointer;
     }
   }
-}`
+`

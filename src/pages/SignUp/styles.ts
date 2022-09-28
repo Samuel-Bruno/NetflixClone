@@ -3,20 +3,20 @@ import styled from 'styled-components'
 import FirstBreakBG from '../../assets/images/signBg.jpg'
 
 
-export const Page = styled.div`{
+export const Page = styled.div`
   display: flex;
   flex-direction: column;
   background-color: #000;
-}`
+`
 
-export const FirstBrake = styled.section`{
+export const FirstBrake = styled.section`
   background-image: url(${FirstBreakBG});
   background-position: center;
   background-size: cover;
   height: 660px;
-}`
+`
 
-export const FirstBrakeWrapper = styled.div`{
+export const FirstBrakeWrapper = styled.div`
   background: linear-gradient(rgba(0, 0, 0, .8),
       rgba(0, 0, 0, .4),
       rgba(0, 0, 0, .9));
@@ -24,9 +24,9 @@ export const FirstBrakeWrapper = styled.div`{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}`
+`
 
-export const BannerCenter = styled.div`{
+export const BannerCenter = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -50,15 +50,15 @@ export const BannerCenter = styled.div`{
     font-weight: 400;
     margin-bottom: 30px;
   }
-}`
+`
 
 
-export const FaqSection = styled.section`{
+export const FaqSection = styled.section`
   border-top: 8px solid #222;
   padding: 70px 45px;
-}`
+`
 
-export const FaqSectionContainer = styled.div`{
+export const FaqSectionContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -73,15 +73,15 @@ export const FaqSectionContainer = styled.div`{
     color: white;
     margin-bottom: 48px;
   }
-}`
+`
 
 
-export const QuestionsList = styled.ul`{
+export const QuestionsList = styled.ul`
   width: 815px;
   list-style: none;
-}`
+`
 
-export const EmailArea = styled.div`{
+export const EmailArea = styled.div`
   margin: 50px 0 10px;
   color: white;
-}`
+`

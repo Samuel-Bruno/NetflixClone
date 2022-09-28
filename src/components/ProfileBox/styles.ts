@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 
-export const ProfileArea = styled.div`{
+export const ProfileArea = styled.div`
   text-align:center;
   max-width:10vw;
   height:fit-content;
@@ -23,9 +23,9 @@ export const ProfileArea = styled.div`{
       color:#b3b3b3;
     }
   }
-}`
+`
 
-export const Box = styled.div<{ imageUrl: string }>`{
+export const Box = styled.div<{ imageUrl: string }>`
   max-height:200px;
   max-width:200px;
   min-width:84px;
@@ -49,9 +49,9 @@ export const Box = styled.div<{ imageUrl: string }>`{
     left:0;
     border-radius:4px;
   }
-}`
+`
 
-export const Name = styled.span`{
+export const Name = styled.span`
   display:block;
   padding:.6em 0;
   color:#666;
@@ -59,4 +59,4 @@ export const Name = styled.span`{
   word-wrap:normal;
   overflow:hidden;
   line-height:1.2em;
-}`
+`
