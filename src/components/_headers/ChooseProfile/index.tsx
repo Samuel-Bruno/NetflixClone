@@ -1,7 +1,7 @@
 import React from 'react'
 import * as S from './styles'
 
-import { ReactComponent as BrandLogo } from '../../../assets/svgs/brandLogo.svg'
+import { ReactComponent as BrandLogo } from '../../../assets/svgs/brand_logo.svg'
 
 
 function ChooseProfilePage() {

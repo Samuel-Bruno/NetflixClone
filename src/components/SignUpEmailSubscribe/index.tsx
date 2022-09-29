@@ -1,7 +1,7 @@
 import React from 'react'
 import * as S from './styles'
 
-import { ReactComponent as SubscribeBtnArrow } from '../../assets/svgs/signInArrow.svg'
+import { ReactComponent as SubscribeBtnArrow } from '../../assets/svgs/signin_arrow.svg'
 
 
 function SignUpEmailSubscribe() {

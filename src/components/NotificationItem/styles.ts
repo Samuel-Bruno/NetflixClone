@@ -8,11 +8,10 @@ export const Box = styled.div`
   gap:15px;
   cursor:pointer;
   background-color:rgba(0,0,0,.5);
-  transition:background-color .3s;
   border-bottom:1px solid #333;
 
   &:hover {
-    background-color:rgba(0,0,0,.8);
+    background-color:rgba(0,0,0,1);
   }
 `
 
