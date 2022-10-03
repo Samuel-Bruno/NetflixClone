@@ -25,9 +25,4 @@ Project URL: [click here](https://samsnetflixclone.netlify.app/)
 
 Language of project: PT-BR
 
-The project is not concluded. It have yet a lot to do:
-- Main Page (Initial page)
-- Categories pages (Series, Movies, My list)
-- API
-- Movies Cards
-- Trailers exibition
+The project is not concluded. It have yet things to do.
