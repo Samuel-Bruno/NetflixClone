@@ -1,3 +1,4 @@
+import parseMediaListToUtilList from '../utils/parseMediaListToUtilList'
 import { BASE_TMDB_URL as BaseUrl, API_TOKEN } from './TmdbConfig'
 
 
@@ -22,9 +23,28 @@ const getAllMovies = async () => {
   }
 }
 
+const getAll = async () => {
+  const moviesPopular = await grq('/movie/popular')
+  const moviesTop_rated = await grq('/movie/top_rated')
+
+  const tvPopular = await grq('/tv/popular')
+  const tvTop_rated = await grq('/tv/top_rated')
+  const tvOnTheAir = await grq('/tv/on_the_air')
+
+  return [
+    parseMediaListToUtilList(moviesPopular, 'movie', 'Filmes populares'),
+    parseMediaListToUtilList(moviesTop_rated, 'movie', 'Filmes em Alta'),
+    parseMediaListToUtilList(tvPopular, 'tv', 'Populares na TV'),
+    parseMediaListToUtilList(tvTop_rated, 'tv', 'Bem falados na TV'),
+    parseMediaListToUtilList(tvOnTheAir, 'tv', 'Passando na TV')
+  ]
+}
+
+
 const get = {
+  all: getAll,
   allMovies: getAllMovies,
-  trendingMovies: grq('/movie/top_rated')
+  trendingMovies: () => grq('/movie/top_rated')
 }
 
 export default {

@@ -1,13 +1,9 @@
 import styled from "styled-components"
-import {
-  BASE_TMDB_URL as BaseUrl,
-  getImgUrl
-} from "../../api/TmdbConfig"
+import { getImgUrl } from "../../api/TmdbConfig"
 
 
 export const Page = styled.div`
   background-color:black;
-  height:200vh;
 `
 
 export const HighLightMovie = styled.div<{ backdropUrl: string | null }>`
@@ -92,5 +88,37 @@ export const MediaBtn = styled.div<{ btnFor: 'watch' | 'info' }>`
     background-color:${p => p.btnFor === 'watch' ?
     'rgba(255,255,255,.7)' : 'rgba(100,100,100,.5)'
   };
+  }
+`
+
+export const CategoriesArea = styled.div`
+  display:flex;
+  flex-direction:column;
+  max-width:100vw;
+`
+
+export const CtgRow = styled.div`
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  margin:20px 0;
+`
+
+export const CtgTitle = styled.h4`
+  font-size:20px;
+  color:white;
+  font-weight:500;
+  margin-left:calc((100vw - 1260px) / 2);
+`
+
+export const ItemsArea = styled.div`
+  display:flex;
+  gap:20px;
+  padding-left:calc((100vw - 1260px) / 2);
+  overflow-x:scroll;
+  overflow-y:hidden;
+
+  &::-webkit-scrollbar {
+    height:0;
   }
 `

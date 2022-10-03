@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from 'react'
 import * as S from './styles'
 import Api from '../../api'
-import { TopRatedMovie } from '../../types/movie'
+import { Movie } from '../../types/movie'
 
 import HomeHeader from '../../components/_headers/Home'
 
 import { ReactComponent as WatchIcon } from '../../assets/svgs/play.svg'
 import { ReactComponent as InfoIcon } from '../../assets/svgs/info.svg'
 import { Link } from 'react-router-dom'
+import ListObjType from '../../types/ListObjType'
+import ListAllType from '../../types/listAll'
+import MediaItem from '../../components/MediaItem'
 
 
 function HomePage() {
 
   const [transparentBg, setTransparentBg] = useState(true)
-  const [highlightMovie, setHighlightMovie] = useState<null | TopRatedMovie>(null)
+  const [highlightMovie, setHighlightMovie] = useState<null | Movie>(null)
+  const [listAll, setListAll] = useState<ListAllType[]>([])
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
@@ -21,10 +25,14 @@ function HomePage() {
     })
 
     const fetchData = async () => {
-      const movies = await Api.get.trendingMovies
+      const movies = await Api.get.trendingMovies()
+      const all = await Api.get.all()
+      console.log(all)
+
       setHighlightMovie(movies.results[
-        Math.ceil(Math.random() * movies.results.length-1)
+        Math.ceil(Math.random() * movies.results.length - 1)
       ])
+      setListAll(all)
     }
     fetchData()
   }, [setHighlightMovie])
@@ -57,7 +65,18 @@ function HomePage() {
           </S.ButtonsArea>
         </S.MediaInfo>
       </S.HighLightMovie>
-      {/* Categories list */}
+      <S.CategoriesArea>
+        {listAll.map((ctg, k) => (
+          <S.CtgRow key={k}>
+            <S.CtgTitle>{ctg.name}</S.CtgTitle>
+            <S.ItemsArea>
+              {ctg.results.map((item, k) => (
+                <MediaItem type={ctg.type} item={item} key={k} />
+              ))}
+            </S.ItemsArea>
+          </S.CtgRow>
+        ))}
+      </S.CategoriesArea>
     </S.Page>
   )
 }
