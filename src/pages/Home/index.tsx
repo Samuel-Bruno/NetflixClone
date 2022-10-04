@@ -39,7 +39,7 @@ function HomePage() {
 
 
   return (
-    <S.Page>
+    <S.Page backdropUrl={highlightMovie ? highlightMovie.backdrop_path : null}>
       <HomeHeader transparentBg={transparentBg} />
       <S.HighLightMovie backdropUrl={highlightMovie ? highlightMovie.backdrop_path : null}>
         <S.MediaInfo>

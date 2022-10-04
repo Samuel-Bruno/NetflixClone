@@ -2,29 +2,38 @@ import styled from "styled-components"
 import { getImgUrl } from "../../api/TmdbConfig"
 
 
-export const Page = styled.div`
-  background-color:black;
+export const Page = styled.div<{ backdropUrl: string | null }>`
+  background-color:#141414;
 `
 
 export const HighLightMovie = styled.div<{ backdropUrl: string | null }>`
+  height:110vh;
+  display:flex;
+  flex-direction:column;
+  color:white;
   ${p => p.backdropUrl ? `background-image:url(${getImgUrl}/original${p.backdropUrl});` : ''}
   background-size:100vw;
   background-position:top;
   background-repeat:no-repeat;
-  height:110vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  color:white;
+
+  &:before {
+    content:'';
+    width:100%;
+    position:absolute;
+    z-index:2;
+    top:100%;
+    height:90px;
+    background-image: linear-gradient(0deg, rgba(20,20,20,1) 30%, transparent);
+  }
 `
 
 export const MediaInfo = styled.div`
   display:flex;
   height:100%;
   flex-direction:column;
-  justify-content:center;
+  justify-content:flex-end;
   background-image: linear-gradient(90deg, rgba(0,0,0,.8) 20%, transparent);
-  padding:0 calc((100vw - 1260px) / 2);
+  padding:0 calc((100vw - 1260px) / 2) 17%;
   gap:22px;
 `
 
@@ -95,6 +104,10 @@ export const CategoriesArea = styled.div`
   display:flex;
   flex-direction:column;
   max-width:100vw;
+  background-color:transparent;
+  margin-top:-24vh;
+  z-index:3;
+  position:relative;
 `
 
 export const CtgRow = styled.div`
@@ -102,13 +115,13 @@ export const CtgRow = styled.div`
   flex-direction:column;
   gap:12px;
   margin:20px 0;
+  text-indent:calc((100vw - 1260px) / 2);
 `
 
 export const CtgTitle = styled.h4`
   font-size:20px;
   color:white;
   font-weight:500;
-  margin-left:calc((100vw - 1260px) / 2);
 `
 
 export const ItemsArea = styled.div`
