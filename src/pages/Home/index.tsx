@@ -10,6 +10,7 @@ import { ReactComponent as InfoIcon } from '../../assets/svgs/info.svg'
 import { Link } from 'react-router-dom'
 import ListAllType from '../../types/listAll'
 import CtgRow from '../../components/CtgRow'
+import HomeFooter from '../../components/_footers/Home'
 
 
 function HomePage() {
@@ -66,6 +67,7 @@ function HomePage() {
       <S.CategoriesArea>
         {listAll.map((ctg, k) => <CtgRow ctg={ctg} key={k} />)}
       </S.CategoriesArea>
+      <HomeFooter />
     </S.Page>
   )
 }
