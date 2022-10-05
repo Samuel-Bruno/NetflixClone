@@ -16,10 +16,19 @@ export const FooterContainer = styled.div`
   margin: auto;
 `
 
+export const SocialMediaArea = styled.div`
+  display:flex;
+  gap:28px;
+
+  a {
+    color:white;
+    text-decoration:none;
+  }
+`
 
 export const LinksArea = styled.div`
   display: flex;
-  margin: 16px 0 20px 0;
+  margin: 0px 0 20px 0;
 `
 
 export const LinkCol = styled.div`

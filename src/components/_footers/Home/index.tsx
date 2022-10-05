@@ -3,6 +3,11 @@ import * as S from './styles'
 
 import { Link } from 'react-router-dom'
 
+import { ReactComponent as FacebookIcon } from '../../../assets/svgs/socialmedia_fb.svg'
+import { ReactComponent as InstagramIcon } from '../../../assets/svgs/socialmedia_igm.svg'
+import { ReactComponent as TwitterIcon } from '../../../assets/svgs/socialmedia_twt.svg'
+import { ReactComponent as YoutubeIcon } from '../../../assets/svgs/socialmedia_ytb.svg'
+
 
 function HomeFooter() {
 
@@ -10,7 +15,20 @@ function HomeFooter() {
   return (
     <S.Footer>
       <S.FooterContainer>
-        {/* social media area */}
+        <S.SocialMediaArea>
+          <Link to={''}>
+            <FacebookIcon fill={'white'} width={28} height={28} />
+          </Link>
+          <Link to={''}>
+            <InstagramIcon fill={'white'} width={28} height={28} />
+          </Link>
+          <Link to={''}>
+            <TwitterIcon fill={'white'} width={28} height={28} />
+          </Link>
+          <Link to={''}>
+            <YoutubeIcon fill={'white'} width={28} height={28} />
+          </Link>
+        </S.SocialMediaArea>
         <S.LinksArea>
           <S.LinkCol>
             <S.LinkColList>
