@@ -109,29 +109,3 @@ export const CategoriesArea = styled.div`
   z-index:3;
   position:relative;
 `
-
-export const CtgRow = styled.div`
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-  margin:20px 0;
-  text-indent:calc((100vw - 1260px) / 2);
-`
-
-export const CtgTitle = styled.h4`
-  font-size:20px;
-  color:white;
-  font-weight:500;
-`
-
-export const ItemsArea = styled.div`
-  display:flex;
-  gap:20px;
-  padding-left:calc((100vw - 1260px) / 2);
-  overflow-x:scroll;
-  overflow-y:hidden;
-
-  &::-webkit-scrollbar {
-    height:0;
-  }
-`

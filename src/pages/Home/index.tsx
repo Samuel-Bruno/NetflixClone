@@ -8,9 +8,8 @@ import HomeHeader from '../../components/_headers/Home'
 import { ReactComponent as WatchIcon } from '../../assets/svgs/play.svg'
 import { ReactComponent as InfoIcon } from '../../assets/svgs/info.svg'
 import { Link } from 'react-router-dom'
-import ListObjType from '../../types/ListObjType'
 import ListAllType from '../../types/listAll'
-import MediaItem from '../../components/MediaItem'
+import CtgRow from '../../components/CtgRow'
 
 
 function HomePage() {
@@ -27,7 +26,6 @@ function HomePage() {
     const fetchData = async () => {
       const movies = await Api.get.trendingMovies()
       const all = await Api.get.all()
-      console.log(all)
 
       setHighlightMovie(movies.results[
         Math.ceil(Math.random() * movies.results.length - 1)
@@ -66,16 +64,7 @@ function HomePage() {
         </S.MediaInfo>
       </S.HighLightMovie>
       <S.CategoriesArea>
-        {listAll.map((ctg, k) => (
-          <S.CtgRow key={k}>
-            <S.CtgTitle>{ctg.name}</S.CtgTitle>
-            <S.ItemsArea>
-              {ctg.results.map((item, k) => (
-                <MediaItem type={ctg.type} item={item} key={k} />
-              ))}
-            </S.ItemsArea>
-          </S.CtgRow>
-        ))}
+        {listAll.map((ctg, k) => <CtgRow ctg={ctg} key={k} />)}
       </S.CategoriesArea>
     </S.Page>
   )
