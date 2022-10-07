@@ -18,8 +18,9 @@ export const CtgTitle = styled.h4`
 export const ItemsArea = styled.div`
   display:flex;
   padding-left:calc((100vw - 1260px) / 2);
-  overflow-x:scroll;
-  overflow-y:hidden;
+  // overflow-x:scroll;
+  overflow-x:clip;
+  // overflow-y:hidden;
   position:relative;
 
   &:hover {
@@ -53,6 +54,7 @@ export const ItemsAreaLeftBtn = styled.button`
   outline:none;
   cursor:pointer;
   transition:background-color .2s;
+  z-index:10;
 
   &:hover {
     background-color:rgba(0,0,0,.6);
@@ -81,6 +83,7 @@ export const ItemsAreaRightBtn = styled.button`
   outline:none;
   cursor:pointer;
   transition:background-color .2s;
+  z-index:3;
 
   &:hover {
     background-color:rgba(0,0,0,.6);
