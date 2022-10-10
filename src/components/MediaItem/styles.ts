@@ -24,7 +24,7 @@ export const BoxContent = styled.div`
     box-shadow:0 0 7px 4px rgba(0,0,0,.8);
     transition-delay:.3s;
     position:absolute;
-    transform:scale(1.3);
+    transform:scale(1.28);
     width:400px;
 
     img {

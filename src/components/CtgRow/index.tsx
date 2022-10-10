@@ -1,15 +1,18 @@
 import React, { useRef, useState } from 'react'
 import * as S from './styles'
+import { Movie } from '../../types/movie'
+import { TVListResult as Tv } from '../../types/Tv'
 import ListAllType from '../../types/listAll'
 
 import MediaItem from '../MediaItem'
 
 type Props = {
-  ctg: ListAllType
+  ctg: ListAllType,
+  pickMediaFn: (type: 'movie' | 'tv', item: Movie | Tv) => void
 }
 
 
-function CtgRow({ ctg }: Props) {
+function CtgRow({ ctg, pickMediaFn }: Props) {
 
   const ItemsAreaRef = useRef<HTMLDivElement | null>(null)
 
@@ -55,7 +58,7 @@ function CtgRow({ ctg }: Props) {
         />
         <S.ItemsContent ref={ItemsAreaRef}>
           {ctg.results.map((item, k) => (
-            <MediaItem type={ctg.type} item={item} key={k} />
+            <MediaItem type={ctg.type} item={item} key={k} pickMediaFn={pickMediaFn} />
           ))}
         </S.ItemsContent>
         <S.ItemsAreaRightBtn className='scrollIndicator'

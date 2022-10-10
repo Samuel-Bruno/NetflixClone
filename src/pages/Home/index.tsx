@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import * as S from './styles'
 import Api from '../../api'
 import { Movie } from '../../types/movie'
+import { TVListResult as Tv } from '../../types/Tv'
 
 import HomeHeader from '../../components/_headers/Home'
 
@@ -11,6 +12,7 @@ import { Link } from 'react-router-dom'
 import ListAllType from '../../types/listAll'
 import CtgRow from '../../components/CtgRow'
 import HomeFooter from '../../components/_footers/Home'
+import MediaModal from '../../components/MediaModal'
 
 
 function HomePage() {
@@ -18,6 +20,13 @@ function HomePage() {
   const [transparentBg, setTransparentBg] = useState(true)
   const [highlightMovie, setHighlightMovie] = useState<null | Movie>(null)
   const [listAll, setListAll] = useState<ListAllType[]>([])
+  const [selectedToModal, setSelectedToModal] = useState<
+    null | { type: 'movie', item: Movie } | { type: 'tv', item: Tv }
+  >(null)
+
+  const handleSelectTvMedia = (type: 'movie' | 'tv', item: Movie | Tv) => {
+    setSelectedToModal({ type: 'tv', item: item as Tv })
+  }
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
@@ -64,8 +73,11 @@ function HomePage() {
           </S.ButtonsArea>
         </S.MediaInfo>
       </S.HighLightMovie>
+      {selectedToModal &&
+        <MediaModal type={'tv'} item={selectedToModal.item as Tv} />
+      }
       <S.CategoriesArea>
-        {listAll.map((ctg, k) => <CtgRow ctg={ctg} key={k} />)}
+        {listAll.map((ctg, k) => <CtgRow ctg={ctg} key={k} pickMediaFn={handleSelectTvMedia} />)}
       </S.CategoriesArea>
       <HomeFooter />
     </S.Page>

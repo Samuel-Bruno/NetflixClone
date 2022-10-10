@@ -16,14 +16,16 @@ import { ReactComponent as MoreInfoIcon } from '../../assets/svgs/more_info.svg'
 
 type Props = {
   type: 'movie',
-  item: Movie
+  item: Movie,
+  pickMediaFn: (type: 'movie' | 'tv', item: Movie | Tv) => void
 } | {
   type: 'tv',
-  item: Tv
+  item: Tv,
+  pickMediaFn: (type: 'movie' | 'tv', item: Movie | Tv) => void
 }
 
 
-function MediaItem({ type, item }: Props) {
+function MediaItem({ type, item, pickMediaFn }: Props) {
 
 
   return (type === 'movie') ? (
@@ -110,7 +112,7 @@ function MediaItem({ type, item }: Props) {
                 </S.RateOptions>
               </S.RateArea>
             </S.ActionsArea>
-            <S.MoreInfo>
+            <S.MoreInfo onClick={() => pickMediaFn(type, item)}>
               <MoreInfoIcon fill={'#888'} width={16} />
             </S.MoreInfo>
           </S.BtnsArea>
