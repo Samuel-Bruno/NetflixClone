@@ -19,3 +19,22 @@ export const moviesCategories = [
   { id: 10752, title: 'Guerra' },
   { id: 37, title: 'Ocidentais' },
 ]
+
+export const TvCategories = [
+  { id: 10759, title: 'Ação e Aventura' },
+  { id: 16, title: 'Animação' },
+  { id: 35, title: 'Comédia' },
+  { id: 80, title: 'Criminal' },
+  { id: 99, title: 'Documentários' },
+  { id: 18, title: 'Drama' },
+  { id: 10751, title: 'Família' },
+  { id: 10762, title: 'Infantil' },
+  { id: 9648, title: 'Mistério' },
+  { id: 10763, title: 'Notícias' },
+  { id: 10764, title: 'Realidade' },
+  { id: 10765, title: 'Sci-Fi' },
+  { id: 10766, title: 'Novelas' },
+  { id: 10767, title: 'Conversas' },
+  { id: 10768, title: 'Guerra e Política' },
+  { id: 37, title: 'Ocidentais' },
+]

@@ -25,7 +25,7 @@ export const BoxContent = styled.div`
     transition-delay:.3s;
     position:absolute;
     transform:scale(1.3);
-    width:350px;
+    width:400px;
 
     img {
       height:calc(100% - 20px);
@@ -103,9 +103,11 @@ export const MediaCategories = styled.div`
   display:flex;
   align-items:flex-end;
   gap:5px;
+  flex-wrap:wrap;
 `
 
 export const MediaCategory = styled.div`
+  white-space:nowrap;
 
   .categoryBall {
     height:100%;

@@ -19,10 +19,10 @@ function CtgRow({ ctg }: Props) {
 
     if (el !== null) {
       const alreadyLeft = el.offsetLeft
-      const ninetyVw = ((pageWidth / 90) * 100)
+      const seventyVw = ((pageWidth / 100) * 75)
 
-      if ((alreadyLeft + ninetyVw) < 0) {
-        el.style.marginLeft = `calc(${alreadyLeft}px + 90vw)`
+      if ((alreadyLeft + seventyVw) < 0) {
+        el.style.marginLeft = `calc(${alreadyLeft}px + 75vw)`
       } else {
         el.style.marginLeft = `0px`
       }
@@ -36,12 +36,12 @@ function CtgRow({ ctg }: Props) {
 
     if (el !== null) {
       const alreadyLeft = el.offsetLeft
-      const ninetyVw = ((pageWidth / 90) * 100)
+      const seventyVw = ((pageWidth / 100) * 75)
 
-      if ((-alreadyLeft + ninetyVw) < (areaWidth - ninetyVw)) {
-        el.style.marginLeft = `calc(${alreadyLeft}px - 90vw)`
+      if ((-alreadyLeft + seventyVw) < (areaWidth - seventyVw)) {
+        el.style.marginLeft = `calc(${alreadyLeft}px - 75vw)`
       } else {
-        el.style.marginLeft = `-${(areaWidth + 320) - ninetyVw}px`
+        el.style.marginLeft = `-${(areaWidth + 320) - seventyVw}px`
       }
     }
   }
