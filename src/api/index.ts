@@ -1,10 +1,13 @@
 import parseMediaListToUtilList from '../utils/parseMediaListToUtilList'
-import { BASE_TMDB_URL as BaseUrl, API_TOKEN } from './TmdbConfig'
+import { BASE_TMDB_URL as BaseUrl, API_TOKEN, API_KEY } from './TmdbConfig'
+import { DetailedMedia } from '../types/api/getDetailedMedia'
 
 
-const grq = async (endpoint: string) => {
-  const params = `?language=pt-br`
-  const req = await fetch(`${BaseUrl}${endpoint}${params}`, {
+const grq = async (endpoint: string, params?: { title: string, value: string }[]) => {
+  const prms = !params ?
+    `?language=pt-br` :
+    `?${params.map(p => `${p.title}=${p.value}&`)}language=pt-br`
+  const req = await fetch(`${BaseUrl}${endpoint}${prms}`, {
     headers: { 'Authorization': `Bearer ${API_TOKEN}` },
   })
   const json = await req.json()
@@ -40,11 +43,26 @@ const getAll = async () => {
   ]
 }
 
+const getMediaDetails = async (mediaType: string, mediaId: number): Promise<DetailedMedia> => {
+  const credit = await grq(`/${mediaType}/${mediaId.toString()}`, [
+    { title: 'append_to_response', value: 'credits' }
+  ])
+  console.log("On API", credit)
+  return credit as DetailedMedia
+}
+
+const getFullMediaInfo = async (mediaType: string, mediaId: number) => {
+  const credit = await grq(`/${mediaType}/${mediaId.toString()}?append_to_response=credits,videos,images`)
+  return credit
+}
+
 
 const get = {
   all: getAll,
   allMovies: getAllMovies,
-  trendingMovies: () => grq('/movie/top_rated')
+  trendingMovies: () => grq('/movie/top_rated'),
+  details: (mediaType: string, mediaId: number) => getMediaDetails(mediaType, mediaId),
+  fullMediaInfo: (mediaType: string, mediaId: number) => getFullMediaInfo(mediaType, mediaId),
 }
 
 export default {

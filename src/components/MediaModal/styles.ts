@@ -190,11 +190,57 @@ a.rateOption {
 }
 `
 
-export const MediaInfo = styled.div``
+export const MediaInfo = styled.div`
+  display:flex;
+  padding:0 50px;
+  gap:30px;
+  margin-bottom:50px;
+`
 
-export const MediaData = styled.div``
+export const MediaData = styled.div`
+  flex:1;
+`
 
-export const MediaCast = styled.div``
+export const FirstRow = styled.div`
+  display:flex;
+  gap:10px;
+  color:white;
+  font-family:'Netflix Sans Rg', Helvetica Neue;
+  font-size:16px;
+  font-weight:300;
+  margin-bottom:30px;
+  
+  .interestRate {
+    color:#46d369;
+  }
+  `
+
+export const MediaTags = styled.div`
+  width:240px;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  
+  .tagName {
+    color:#555;
+    font-family:'Netflix Sans Rg', Helvetica Neue;
+    font-size:14px;
+    font-weight:300;
+  }
+  
+  .castNames {
+    color:white;
+    font-family:'Netflix Sans Rg', Helvetica Neue;
+    font-size:14px;
+    font-weight:300;
+  }
+`
+
+export const OverviewRow = styled.div`
+  color:white;
+  font-size:14px;
+  font-family:'Netflix Sans Rg';
+`
 
 export const MediaEpisodes = styled.div``
 
