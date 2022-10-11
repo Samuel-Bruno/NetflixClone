@@ -1,12 +1,26 @@
 import parseMediaListToUtilList from '../utils/parseMediaListToUtilList'
 import { BASE_TMDB_URL as BaseUrl, API_TOKEN, API_KEY } from './TmdbConfig'
 import { DetailedMedia } from '../types/api/getDetailedMedia'
+import { TvSeason } from '../types/TvSeason'
 
 
-const grq = async (endpoint: string, params?: { title: string, value: string }[]) => {
-  const prms = !params ?
-    `?language=pt-br` :
-    `?${params.map(p => `${p.title}=${p.value}&`)}language=pt-br`
+const grq = async (endpoint: string, credits: boolean = false, videos: boolean = false, images: boolean = false, params?: { title: string, value: string }[]) => {
+  let prms = '?language=pt-br'
+
+  if (credits || videos || images) {
+    let choosed = []
+    if (credits) choosed.push('credits')
+    if (videos) choosed.push('videos')
+    if (images) choosed.push('images')
+
+    prms += `&append_to_response=${choosed.join(',')}`
+  }
+  if (params) {
+    params.forEach(pm => {
+      prms += `&${pm.title}=${pm.value}`
+    })
+  }
+
   const req = await fetch(`${BaseUrl}${endpoint}${prms}`, {
     headers: { 'Authorization': `Bearer ${API_TOKEN}` },
   })
@@ -26,6 +40,36 @@ const getAllMovies = async () => {
   }
 }
 
+const getMediaDetails = async (mediaType: string, mediaId: number): Promise<DetailedMedia> => {
+  const info = await grq(`/${mediaType}/${mediaId.toString()}`)
+  return info as DetailedMedia
+}
+
+const getFullMediaInfo = async (mediaType: string, mediaId: number) => {
+  const info = await grq(`/${mediaType}/${mediaId}`, true, true, true)
+  return info
+}
+
+const getSeasonInfo = async (serieId: number, seasonNumber: number) => {
+  const info = await grq(`/tv/${serieId}/season/${seasonNumber}`)
+  return info
+}
+
+const getSerieInfo = async (serieId: number, seasonsQuantity: number) => {
+  let res = await grq(`/tv/${serieId}`, true, true, true)
+  res.seasonsData = [] as TvSeason[]
+
+  if (seasonsQuantity > 0) {
+    for (let i = 1; i < seasonsQuantity; i++) {
+      let sInfo = await grq(`/tv/${serieId}/season/${i}`)
+      res.seasonsData.push(sInfo as TvSeason)
+    }
+  }
+
+  return res
+}
+
+
 const getAll = async () => {
   const moviesPopular = await grq('/movie/popular')
   const moviesTop_rated = await grq('/movie/top_rated')
@@ -37,23 +81,11 @@ const getAll = async () => {
   return [
     parseMediaListToUtilList(moviesPopular, 'movie', 'Filmes populares'),
     parseMediaListToUtilList(moviesTop_rated, 'movie', 'Filmes em Alta'),
+
     parseMediaListToUtilList(tvPopular, 'tv', 'Populares na TV'),
     parseMediaListToUtilList(tvTop_rated, 'tv', 'Bem falados na TV'),
     parseMediaListToUtilList(tvOnTheAir, 'tv', 'Passando na TV')
   ]
-}
-
-const getMediaDetails = async (mediaType: string, mediaId: number): Promise<DetailedMedia> => {
-  const credit = await grq(`/${mediaType}/${mediaId.toString()}`, [
-    { title: 'append_to_response', value: 'credits' }
-  ])
-  console.log("On API", credit)
-  return credit as DetailedMedia
-}
-
-const getFullMediaInfo = async (mediaType: string, mediaId: number) => {
-  const credit = await grq(`/${mediaType}/${mediaId.toString()}?append_to_response=credits,videos,images`)
-  return credit
 }
 
 
@@ -61,8 +93,10 @@ const get = {
   all: getAll,
   allMovies: getAllMovies,
   trendingMovies: () => grq('/movie/top_rated'),
-  details: (mediaType: string, mediaId: number) => getMediaDetails(mediaType, mediaId),
-  fullMediaInfo: (mediaType: string, mediaId: number) => getFullMediaInfo(mediaType, mediaId),
+  details: getMediaDetails,
+  fullMediaInfo: getFullMediaInfo,
+  seasonInfo: getSeasonInfo,
+  serieInfo: getSerieInfo
 }
 
 export default {

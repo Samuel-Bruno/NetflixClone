@@ -244,6 +244,31 @@ export const OverviewRow = styled.div`
 
 export const MediaEpisodes = styled.div``
 
+export const EpisodesTop = styled.div`
+  display:flex;
+  padding:0 50px;
+  justify-content:space-between;
+  margin-bottom:10px;
+
+  .episodesTitle {
+    font-size:24px;
+    color:white;
+  }
+
+  .mediaTitleOnSelect {
+    color:white;
+    font-size:18px;
+  }
+`
+
+export const EpisodesList = styled.div`
+  display:flex;
+  justify-content:space-between;
+  flex-direction:column;
+  padding:0 50px;
+  margin-bottom:10px;
+`
+
 export const Sugestions = styled.div``
 
 export const MediaTrailers = styled.div``

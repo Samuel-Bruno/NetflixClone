@@ -14,6 +14,7 @@ import CtgRow from '../../components/CtgRow'
 import HomeFooter from '../../components/_footers/Home'
 import MediaModal from '../../components/MediaModal'
 import { DetailedMedia } from '../../types/api/getDetailedMedia'
+import { TvSeason } from '../../types/TvSeason'
 
 
 function HomePage() {
@@ -22,13 +23,17 @@ function HomePage() {
   const [highlightMovie, setHighlightMovie] = useState<null | Movie>(null)
   const [listAll, setListAll] = useState<ListAllType[]>([])
   const [selectedToModal, setSelectedToModal] = useState<
-    null | { type: 'movie', item: Movie } | { type: 'tv', item: DetailedMedia }
+    null | { type: 'movie', item: Movie } | { type: 'tv', item: TvSeason }
   >(null)
 
-  const handleSelectTvMedia = async (type: 'movie' | 'tv', item: Movie | Tv) => {
+  const handleSelectTvMedia = async (
+    type: 'movie' | 'tv', item: Movie | Tv
+  ) => {
     let detailedMedia = await Api.get.details(type, item.id)
-    console.log("Handle selectedmedia", detailedMedia)
-    setSelectedToModal({ type: 'tv', item: detailedMedia })
+    if (type === 'tv') {
+      let seasonInfo: TvSeason = await Api.get.serieInfo(item.id, detailedMedia.seasons.length)
+      setSelectedToModal({ type: 'tv', item: seasonInfo })
+    }
   }
 
   useEffect(() => {
@@ -77,7 +82,7 @@ function HomePage() {
         </S.MediaInfo>
       </S.HighLightMovie>
       {selectedToModal &&
-        <MediaModal type={'tv'} item={selectedToModal.item as DetailedMedia} />
+        <MediaModal type={'tv'} item={selectedToModal.item as TvSeason} />
       }
       <S.CategoriesArea>
         {listAll.map((ctg, k) => <CtgRow ctg={ctg} key={k} pickMediaFn={handleSelectTvMedia} />)}
