@@ -24,15 +24,21 @@ function HomePage() {
   const [selectedToModal, setSelectedToModal] = useState<
     null | { type: 'movie', item: Movie } | { type: 'tv', item: TvSeason }
   >(null)
+  const [showingModal, setShowingModal] = useState(false)
 
-  const handleSelectTvMedia = async (
-    type: 'movie' | 'tv', item: Movie | Tv
-  ) => {
+  const handleSelectTvMedia = async (type: 'movie' | 'tv', item: Movie | Tv) => {
     let detailedMedia = await Api.get.details(type, item.id)
     if (type === 'tv') {
       let seasonInfo: TvSeason = await Api.get.serieInfo(item.id, detailedMedia.seasons.length)
       setSelectedToModal({ type: 'tv', item: seasonInfo })
+
+      toggleBodyScroll()
+      setShowingModal(true)
     }
+  }
+
+  const toggleBodyScroll = () => {
+    window.document.body.classList.toggle('withOpenedModal')
   }
 
   useEffect(() => {
@@ -54,9 +60,7 @@ function HomePage() {
 
 
   return (
-    <S.Page backdropUrl={highlightMovie ? highlightMovie.backdrop_path : null}
-      openedModal={selectedToModal !== null}
-    >
+    <S.Page backdropUrl={highlightMovie ? highlightMovie.backdrop_path : null}>
       <HomeHeader transparentBg={transparentBg} />
       <S.HighLightMovie backdropUrl={highlightMovie ? highlightMovie.backdrop_path : null}>
         <S.MediaInfo>
@@ -82,9 +86,11 @@ function HomePage() {
           </S.ButtonsArea>
         </S.MediaInfo>
       </S.HighLightMovie>
-      {selectedToModal &&
+      {selectedToModal && showingModal &&
         <MediaModal type={'tv'}
           item={selectedToModal.item as TvSeason}
+          toggleBodyScroll={toggleBodyScroll}
+          setShowingModal={setShowingModal}
         />
       }
       <S.CategoriesArea>

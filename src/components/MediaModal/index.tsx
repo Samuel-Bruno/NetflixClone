@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import * as S from './styles'
 import { Movie } from '../../types/movie'
-import { TVListResult as Tv } from '../../types/Tv'
+import { TvSeason } from '../../types/TvSeason'
+import { TvCategories } from '../../api/TmdbCategoriesNames'
 
+import EpisodeItem from '../EpisodeItem'
 import { Link } from 'react-router-dom'
 
 import { ReactComponent as WatchIcon } from '../../assets/svgs/play.svg'
@@ -10,20 +12,22 @@ import { ReactComponent as MyListIcon } from '../../assets/svgs/add_my_list.svg'
 import { ReactComponent as DislikeIcon } from '../../assets/svgs/dislike.svg'
 import { ReactComponent as LikeIcon } from '../../assets/svgs/like.svg'
 import { ReactComponent as DoubleLikeIcon } from '../../assets/svgs/double_like.svg'
-import { TvSeason } from '../../types/TvSeason'
-import { TvCategories } from '../../api/TmdbCategoriesNames'
-import EpisodeItem from '../EpisodeItem'
+import { ReactComponent as CloseIcon } from '../../assets/svgs/close.svg'
 
 type Props = {
   type: 'movie',
-  item: Movie
+  item: Movie,
+  toggleBodyScroll: () => void,
+  setShowingModal: (state: boolean) => void
 } | {
   type: 'tv',
-  item: TvSeason
+  item: TvSeason,
+  toggleBodyScroll: () => void,
+  setShowingModal: (state: boolean) => void
 }
 
 
-function MediaModal({ type, item }: Props) {
+function MediaModal({ type, item, toggleBodyScroll, setShowingModal }: Props) {
 
   const [showingSeason, setShowingSeason] = useState<null | number>(null)
   const [showingSeasonsList, setShowingSeasonsList] = useState<boolean>(false)
@@ -31,6 +35,11 @@ function MediaModal({ type, item }: Props) {
   useEffect(() => {
     if (type === 'tv') setShowingSeason(item.seasons[1].id)
   }, [])
+
+  const handleCloseModal = () => {
+    setShowingModal(false)
+    toggleBodyScroll()
+  }
 
 
   return (type === 'movie') ? (
@@ -112,6 +121,9 @@ function MediaModal({ type, item }: Props) {
                   </S.RateOptions>
                 </S.RateArea>
               </S.BtnsArea>
+              <S.CloseModalBtn onClick={handleCloseModal}>
+                <CloseIcon width={20} />
+              </S.CloseModalBtn>
             </S.Backdrop>
           </S.Top>
           <S.MediaInfo>

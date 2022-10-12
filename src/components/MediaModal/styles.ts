@@ -52,6 +52,20 @@ export const Backdrop = styled.div<{ backdropUrl: string | null }>`
   }
 `
 
+export const CloseModalBtn = styled.div`
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  position:absolute;
+  top:20px;
+  right:20px;
+  width:40px;
+  height:40px;
+  border-radius:20px;
+  background-color:rgba(0,0,0,.8);
+  color:white;
+`
+
 export const BtnsArea = styled.div`
   display:flex;
   align-items:center;
