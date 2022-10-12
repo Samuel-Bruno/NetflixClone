@@ -13,7 +13,6 @@ import ListAllType from '../../types/listAll'
 import CtgRow from '../../components/CtgRow'
 import HomeFooter from '../../components/_footers/Home'
 import MediaModal from '../../components/MediaModal'
-import { DetailedMedia } from '../../types/api/getDetailedMedia'
 import { TvSeason } from '../../types/TvSeason'
 
 
@@ -55,7 +54,9 @@ function HomePage() {
 
 
   return (
-    <S.Page backdropUrl={highlightMovie ? highlightMovie.backdrop_path : null}>
+    <S.Page backdropUrl={highlightMovie ? highlightMovie.backdrop_path : null}
+      openedModal={selectedToModal !== null}
+    >
       <HomeHeader transparentBg={transparentBg} />
       <S.HighLightMovie backdropUrl={highlightMovie ? highlightMovie.backdrop_path : null}>
         <S.MediaInfo>
@@ -82,7 +83,9 @@ function HomePage() {
         </S.MediaInfo>
       </S.HighLightMovie>
       {selectedToModal &&
-        <MediaModal type={'tv'} item={selectedToModal.item as TvSeason} />
+        <MediaModal type={'tv'}
+          item={selectedToModal.item as TvSeason}
+        />
       }
       <S.CategoriesArea>
         {listAll.map((ctg, k) => <CtgRow ctg={ctg} key={k} pickMediaFn={handleSelectTvMedia} />)}

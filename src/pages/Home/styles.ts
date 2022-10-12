@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { getImgUrl } from "../../api/TmdbConfig"
 
 
-export const Page = styled.div<{ backdropUrl: string | null }>`
+export const Page = styled.div<{ backdropUrl: string | null, openedModal: boolean }>`
   background-color:#141414;
 `
 

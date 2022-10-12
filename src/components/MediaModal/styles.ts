@@ -3,23 +3,27 @@ import { getImgUrl } from "../../api/TmdbConfig"
 
 
 export const Wrapper = styled.div`
-  position:absolute;
   top:0;
   left:0;
   right:0;
-  overflow:hidden;
+  bottom:0;
+  position:fixed;
+  z-index:100;
+  overflow-y:scroll;
+`
+
+export const PreContainer = styled.div`
+  position:absolute;
+  width:100%;
   padding-top:32px;
-  z-index:1000;
   background-color:rgba(0,0,0,.6);
   display:flex;
   justify-content:center;
-  
 `
 
 export const ModalContainer = styled.div`
   width:100%;
   max-width:850px;
-  height:200vh;
   border-radius:10px;
   background-color:#141414;
   overflow:hidden;
@@ -259,6 +263,118 @@ export const EpisodesTop = styled.div`
     color:white;
     font-size:18px;
   }
+`
+
+export const SeasonSelectArea = styled.div`
+  display:flex;
+  flex-direction:column;
+  width:240px;
+  position:relative;
+`
+
+export const SeasonSelect = styled.button`
+  display:flex;
+  align-self:flex-end;
+  align-items:center;
+  gap:32px;
+  background-color:#242424;
+  color:white;
+  outline:none;
+  border:1px solid #444;
+  padding: 8px 20px 10px 20px;
+  font-family: 'Netflix Sans Rg';
+  font-size: 18px;
+  cursor:pointer;
+  
+  &.opened {
+
+    #seasonsDropDown {
+      transform:rotate(-180deg);
+      margin-top:-5px;
+    }
+  }
+`
+
+export const DropDown = styled.div`
+  border:5px solid transparent;
+  border-top:5px solid white;
+  margin-top:5px;
+  cursor:pointer;
+  transition transform .5s, margin-top .2s;
+`
+
+export const SeasonSelectEps = styled.ul<{ showing: boolean }>`
+  display:${p => p.showing ? 'flex' : 'none'};
+  flex-direction:column;
+  position:absolute;
+  top:100%;
+  right:0;
+  background-color:#242424;
+  border:1px solid #444;
+  margin-top:2px;
+  height:240px;
+  overflow-y:scroll;
+  scrollbar-color:#b7b7b7 white;
+  padding-bottom:10px;
+
+  &::-webkit-scrollbar {
+    width:8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background:transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color:#808080;
+    border-radius:4px;
+  }
+`
+
+export const SeasonsOptionsArea = styled.div`
+  padding: 10px 0 14px;
+  position:relative;
+  
+  &:after {
+    content:'';
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    background-color:#444;
+    height:2px;
+    margin-top:2px;
+    width:90%;
+  }
+`
+
+export const SeasonOption = styled.li<{ seeAll?: boolean }>`
+  display:flex;
+  justify-content:${p => p.seeAll ? 'center' : 'space-between'};
+  align-items:center;
+  background-color:transparent;
+  padding:10px;
+  color:white;
+  padding:10px 12px;
+  cursor:pointer;
+  gap:10px;
+
+  &:hover {
+    background-color:#444;
+  }
+`
+
+export const SeasonName = styled.span`
+  font-size:18px;
+  font-weight:500;
+  font-family:'Netflix Sans Md';
+  white-space:nowrap;
+`
+
+export const SeasonEpCount = styled.span`
+  font-size:14px;
+  font-family:'Netflix Sans Rg';
+  font-family:300;
+  white-space:nowrap;
 `
 
 export const EpisodesList = styled.div`

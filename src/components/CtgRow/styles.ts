@@ -18,9 +18,7 @@ export const CtgTitle = styled.h4`
 export const ItemsArea = styled.div`
   display:flex;
   padding-left:calc((100vw - 1260px) / 2);
-  // overflow-x:scroll;
   overflow-x:clip;
-  // overflow-y:hidden;
   position:relative;
 
   &:hover {
