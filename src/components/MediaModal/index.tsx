@@ -33,7 +33,10 @@ function MediaModal({ type, item, toggleBodyScroll, setShowingModal }: Props) {
   const [showingSeasonsList, setShowingSeasonsList] = useState<boolean>(false)
 
   useEffect(() => {
-    if (type === 'tv') setShowingSeason(item.seasons[1].id)
+    if (type === 'tv') {
+      if (item.seasons[1]) setShowingSeason(item.seasons[1].id)
+      else setShowingSeason(item.seasons[0].id)
+    }
   }, [])
 
   const handleCloseModal = () => {

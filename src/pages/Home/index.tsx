@@ -27,13 +27,19 @@ function HomePage() {
   const [showingModal, setShowingModal] = useState(false)
 
   const handleSelectTvMedia = async (type: 'movie' | 'tv', item: Movie | Tv) => {
-    let detailedMedia = await Api.get.details(type, item.id)
-    if (type === 'tv') {
-      let seasonInfo: TvSeason = await Api.get.serieInfo(item.id, detailedMedia.seasons.length)
-      setSelectedToModal({ type: 'tv', item: seasonInfo })
 
-      toggleBodyScroll()
-      setShowingModal(true)
+    if (type === 'tv') {
+      let detailedMedia = await Api.get.details(type, item.id)
+
+      if (detailedMedia.seasons) {
+        let seasonInfo: TvSeason = await Api.get.serieInfo(item.id, detailedMedia.seasons.length)
+        setSelectedToModal({ type: 'tv', item: seasonInfo })
+
+        toggleBodyScroll()
+        setShowingModal(true)
+      } else {
+        // setSelectedToModal({ type: 'movie', item: /*____*/ })  // its a movie. Get movieInfo as serieInfo
+      }
     }
   }
 

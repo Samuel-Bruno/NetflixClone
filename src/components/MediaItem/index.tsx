@@ -65,9 +65,7 @@ function MediaItem({ type, item, pickMediaFn }: Props) {
           <S.MediaInfo>
             <S.MediaVoteAverage>{item.vote_average * 10}% relevante</S.MediaVoteAverage>
             <S.MediaOverview>
-              {item.overview &&
-                <span>Sinopse:</span>
-              }
+              {item.overview && <span>Sinopse:</span>}
               <div className="overviewText">{item.overview}</div>
             </S.MediaOverview>
             <S.MediaCategories>

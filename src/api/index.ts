@@ -56,17 +56,28 @@ const getSeasonInfo = async (serieId: number, seasonNumber: number) => {
 }
 
 const getSerieInfo = async (serieId: number, seasonsQuantity: number) => {
+  console.log(serieId, seasonsQuantity)
   let res = await grq(`/tv/${serieId}`, true, true, true)
   res.seasonsData = [] as TvSeason[]
 
   if (seasonsQuantity > 0) {
-    for (let i = 1; i < seasonsQuantity; i++) {
+    for (let i = 1; i <= seasonsQuantity; i++) {
       let sInfo = await grq(`/tv/${serieId}/season/${i}`)
       res.seasonsData.push(sInfo as TvSeason)
     }
   }
 
   return res
+}
+
+const getGenres = async () => {
+  const moviesGenres = await grq('/genre/movie/list')
+  const tvGenres = await grq('/genre/tv/list')
+
+  return {
+    moviesGenres,
+    tvGenres
+  }
 }
 
 
@@ -84,7 +95,7 @@ const getAll = async () => {
 
     parseMediaListToUtilList(tvPopular, 'tv', 'Populares na TV'),
     parseMediaListToUtilList(tvTop_rated, 'tv', 'Bem falados na TV'),
-    parseMediaListToUtilList(tvOnTheAir, 'tv', 'Passando na TV')
+    parseMediaListToUtilList(tvOnTheAir, 'tv', 'Na TV') // movies and seasons
   ]
 }
 
@@ -96,7 +107,8 @@ const get = {
   details: getMediaDetails,
   fullMediaInfo: getFullMediaInfo,
   seasonInfo: getSeasonInfo,
-  serieInfo: getSerieInfo
+  serieInfo: getSerieInfo,
+  genres: getGenres
 }
 
 export default {
