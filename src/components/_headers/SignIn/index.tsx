@@ -1,8 +1,9 @@
 import React from 'react'
 import * as S from './styles'
 
-import { ReactComponent as BrandLogo } from '../../../assets/svgs/brand_logo.svg'
 import { Link } from 'react-router-dom'
+
+import { ReactComponent as BrandLogo } from '../../../assets/svgs/brand_logo.svg'
 
 
 function SignInHeader() {

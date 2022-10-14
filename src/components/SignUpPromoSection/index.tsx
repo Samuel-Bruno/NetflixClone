@@ -1,7 +1,8 @@
 import React from 'react'
-import SignUpDwlPromoMedia from '../SignUpDwlPromoMedia';
-
 import * as S from './styles'
+
+import SignUpDwlPromoMedia from '../SignUpDwlPromoMedia'
+
 
 type Props = {
   title: string;

@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import * as S from './styles'
-import { getImgUrl } from "../../api/TmdbConfig"
 import { Movie } from '../../types/movie'
 import { TVListResult as Tv } from '../../types/Tv'
+import { getImgUrl } from "../../api/TmdbConfig"
 import { moviesCategories, TvCategories } from '../../api/TmdbCategoriesNames'
 
 import { Link } from 'react-router-dom'
@@ -13,7 +13,6 @@ import { ReactComponent as DislikeIcon } from '../../assets/svgs/dislike.svg'
 import { ReactComponent as LikeIcon } from '../../assets/svgs/like.svg'
 import { ReactComponent as DoubleLikeIcon } from '../../assets/svgs/double_like.svg'
 import { ReactComponent as MoreInfoIcon } from '../../assets/svgs/more_info.svg'
-import { TvSeason } from '../../types/TvSeason'
 
 type Props = {
   type: 'movie',

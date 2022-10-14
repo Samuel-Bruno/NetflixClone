@@ -1,10 +1,10 @@
 import React from 'react'
-
 import * as S from './styles'
 
 import DownloadSTImage from '../../assets/images/strangerThings_download.jpg'
 import STCover from '../../assets/images/strangerThings_downloadCover.png'
 import DownloadGif from '../../assets/images/download-icon_gif.gif'
+
 
 function SignUpDwlPromoMedia() {
 

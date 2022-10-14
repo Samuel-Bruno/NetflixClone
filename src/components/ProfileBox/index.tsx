@@ -1,6 +1,7 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
 import * as S from './styles'
+
+import { Link } from 'react-router-dom'
 
 type Props = {
   profileName: string;

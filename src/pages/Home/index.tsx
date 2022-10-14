@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import * as S from './styles'
-import Api from '../../api'
 import { Movie } from '../../types/movie'
 import { TVListResult as Tv } from '../../types/Tv'
+import ListAllType from '../../types/listAll'
+import { TvSeason } from '../../types/TvSeason'
+import Api from '../../api'
 
+import { Link } from 'react-router-dom'
 import HomeHeader from '../../components/_headers/Home'
+import MediaModal from '../../components/MediaModal'
+import CtgRow from '../../components/CtgRow'
+import HomeFooter from '../../components/_footers/Home'
 
 import { ReactComponent as WatchIcon } from '../../assets/svgs/play.svg'
 import { ReactComponent as InfoIcon } from '../../assets/svgs/info.svg'
-import { Link } from 'react-router-dom'
-import ListAllType from '../../types/listAll'
-import CtgRow from '../../components/CtgRow'
-import HomeFooter from '../../components/_footers/Home'
-import MediaModal from '../../components/MediaModal'
-import { TvSeason } from '../../types/TvSeason'
 
 
 function HomePage() {

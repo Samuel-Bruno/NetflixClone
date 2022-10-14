@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import * as S from './styles'
 import { Movie } from '../../types/movie'
 import { TVListResult as Tv } from '../../types/Tv'

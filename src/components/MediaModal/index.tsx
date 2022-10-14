@@ -4,8 +4,8 @@ import { Movie } from '../../types/movie'
 import { TvSeason } from '../../types/TvSeason'
 import { TvCategories } from '../../api/TmdbCategoriesNames'
 
-import EpisodeItem from '../EpisodeItem'
 import { Link } from 'react-router-dom'
+import EpisodeItem from '../EpisodeItem'
 
 import { ReactComponent as WatchIcon } from '../../assets/svgs/play.svg'
 import { ReactComponent as MyListIcon } from '../../assets/svgs/add_my_list.svg'

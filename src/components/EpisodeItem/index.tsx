@@ -3,6 +3,7 @@ import * as S from './styles'
 import { Episode } from '../../types/TvSeason'
 
 import { Link } from 'react-router-dom'
+
 import { ReactComponent as PlayIcon } from '../../assets/svgs/play.svg'
 
 type Props = {

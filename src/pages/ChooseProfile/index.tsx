@@ -1,10 +1,9 @@
 import React from 'react'
-
 import * as S from './styles'
 
+import { Link } from 'react-router-dom'
 import ChooseProfileHeader from '../../components/_headers/ChooseProfile'
 import ProfileBox from '../../components/ProfileBox'
-import { Link } from 'react-router-dom'
 
 
 function ChooseProfilePage() {
