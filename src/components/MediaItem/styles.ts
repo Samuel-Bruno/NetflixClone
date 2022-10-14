@@ -7,6 +7,7 @@ export const Box = styled.div`
   height:230px;
   border-radius:4px;
   cursor:pointer;
+  position:relative;
 `
 
 export const BoxContent = styled.div`
@@ -26,6 +27,8 @@ export const BoxContent = styled.div`
     position:absolute;
     transform:scale(1.28);
     width:400px;
+    position:absolute;
+    z-index:4;
 
     img {
       height:calc(100% - 20px);

@@ -41,6 +41,11 @@ function MediaModal({ type, item, toggleBodyScroll, setShowingModal }: Props) {
     toggleBodyScroll()
   }
 
+  const handleChangeSeason = (seasonId: number) => {
+    setShowingSeason(seasonId)
+    setShowingSeasonsList(false)
+  }
+
 
   return (type === 'movie') ? (
     <S.Wrapper>
@@ -171,7 +176,7 @@ function MediaModal({ type, item, toggleBodyScroll, setShowingModal }: Props) {
                   <S.SeasonSelectEps showing={showingSeasonsList}>
                     <S.SeasonsOptionsArea>
                       {item.seasons.map((s, k) => (k > 0) ? (
-                        <S.SeasonOption value={s.id} key={k}>
+                        <S.SeasonOption value={s.id} key={k} onClick={() => handleChangeSeason(s.id)}>
                           <S.SeasonName>{s.name}</S.SeasonName>
                           <S.SeasonEpCount>{`(${s.episode_count} episódio${s.episode_count > 1 ? 's' : ''})`}</S.SeasonEpCount>
                         </S.SeasonOption>

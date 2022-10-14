@@ -52,7 +52,7 @@ export const ItemsAreaLeftBtn = styled.button`
   outline:none;
   cursor:pointer;
   transition:background-color .2s;
-  z-index:10;
+  z-index:3;
 
   &:hover {
     background-color:rgba(0,0,0,.6);
