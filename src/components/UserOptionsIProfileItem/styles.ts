@@ -6,7 +6,6 @@ export const Box = styled.div`
   align-items:center;
   
   a {
-    // display:block;
     display:flex;
     align-items:center;
     justify-content:flex-start;

@@ -231,7 +231,7 @@ export const FirstRow = styled.div`
   .interestRate {
     color:#46d369;
   }
-  `
+`
 
 export const MediaTags = styled.div`
   width:240px;
@@ -399,7 +399,23 @@ export const EpisodesList = styled.div`
   margin-bottom:10px;
 `
 
-export const Sugestions = styled.div``
+export const Sugestions = styled.div`
+  padding:20px 50px 0;
+
+  h4 {
+    font-size:24px;
+    font-family:Helvetica;
+    font-weight:600;
+    color:white;
+    margin:20px 0;
+  }
+`
+
+export const SugestionsItemsArea = styled.div`
+  display:grid;
+  grid-template-columns: repeat(2, minmax(200px, 1fr));
+  gap:20px 8px;
+`
 
 export const MediaTrailers = styled.div``
 

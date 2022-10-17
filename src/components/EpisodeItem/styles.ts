@@ -41,16 +41,16 @@ export const Container = styled.div`
 export const Picture = styled.div<{ bgImg: string }>`
   min-width:130px;
   height:70px;
-  background-image:url(${getImgUrl}/original${p => p.bgImg});
+  background-image:url(${getImgUrl}/w300${p => p.bgImg});
   background-size:cover;
   background-position:center;
   border-radius:6px;
   display:flex;
   justify-content:center;
   align-items:center;
-  `
-  
-  export const PlayIconArea = styled.div`
+`
+
+export const PlayIconArea = styled.div`
   border-radius:50%;
   display:flex;
   justify-content:center;

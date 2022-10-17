@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import * as S from './styles'
 import { Movie } from '../../types/movie'
-import { TvSeason } from '../../types/TvSeason'
 import { TvCategories } from '../../api/TmdbCategoriesNames'
 
 import { Link } from 'react-router-dom'
 import EpisodeItem from '../EpisodeItem'
+import Sugestion from '../Sugestion'
 
 import { ReactComponent as WatchIcon } from '../../assets/svgs/play.svg'
 import { ReactComponent as MyListIcon } from '../../assets/svgs/add_my_list.svg'
@@ -13,6 +13,7 @@ import { ReactComponent as DislikeIcon } from '../../assets/svgs/dislike.svg'
 import { ReactComponent as LikeIcon } from '../../assets/svgs/like.svg'
 import { ReactComponent as DoubleLikeIcon } from '../../assets/svgs/double_like.svg'
 import { ReactComponent as CloseIcon } from '../../assets/svgs/close.svg'
+import { SerieInfo } from '../../types/api/SerieInfo'
 
 type Props = {
   type: 'movie',
@@ -21,7 +22,7 @@ type Props = {
   setShowingModal: (state: boolean) => void
 } | {
   type: 'tv',
-  item: TvSeason,
+  item: SerieInfo,
   toggleBodyScroll: () => void,
   setShowingModal: (state: boolean) => void
 }
@@ -90,10 +91,10 @@ function MediaModal({ type, item, toggleBodyScroll, setShowingModal }: Props) {
           </S.MediaData>
           <S.MediaTags>.</S.MediaTags>
         </S.MediaInfo>
-        <S.MediaEpisodes></S.MediaEpisodes> {/* if exists (or if can get) */}
+        <S.MediaEpisodes></S.MediaEpisodes>
         <S.Sugestions></S.Sugestions>
-        <S.MediaTrailers></S.MediaTrailers> {/* if exists (or if can get) */}
-        <S.MediaAbout></S.MediaAbout>       {/* if exists (or if can get) */}
+        <S.MediaTrailers></S.MediaTrailers>
+        <S.MediaAbout></S.MediaAbout>
       </S.ModalContainer>
     </S.Wrapper>
   ) : (
@@ -201,10 +202,17 @@ function MediaModal({ type, item, toggleBodyScroll, setShowingModal }: Props) {
                 <EpisodeItem episode={ep} key={k} />
               )}
             </S.EpisodesList>
-          </S.MediaEpisodes> {/* if exists (or if can get) */}
-          <S.Sugestions></S.Sugestions>
-          <S.MediaTrailers></S.MediaTrailers> {/* if exists (or if can get) */}
-          <S.MediaAbout></S.MediaAbout>       {/* if exists (or if can get) */}
+          </S.MediaEpisodes>
+          <S.Sugestions>
+            <h4>Títulos semelhantes</h4>
+            <S.SugestionsItemsArea>
+              {item.sugestions.results.map((sugestion, k) =>
+                <Sugestion info={sugestion} key={k} />
+              )}
+            </S.SugestionsItemsArea>
+          </S.Sugestions>
+          <S.MediaTrailers></S.MediaTrailers>
+          <S.MediaAbout></S.MediaAbout>
         </S.ModalContainer>
       </S.PreContainer>
     </S.Wrapper>

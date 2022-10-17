@@ -1,7 +1,9 @@
 import parseMediaListToUtilList from '../utils/parseMediaListToUtilList'
-import { BASE_TMDB_URL as BaseUrl, API_TOKEN, API_KEY } from './TmdbConfig'
+import { BASE_TMDB_URL as BaseUrl, API_TOKEN } from './TmdbConfig'
 import { DetailedMedia } from '../types/api/getDetailedMedia'
 import { TvSeason } from '../types/TvSeason'
+import { BasicSugestion, Sugestion, TvSugestions } from '../types/TvSugestions'
+import { SerieInfo } from '../types/api/SerieInfo'
 
 
 const grq = async (endpoint: string, credits: boolean = false, videos: boolean = false, images: boolean = false, params?: { title: string, value: string }[]) => {
@@ -55,10 +57,11 @@ const getSeasonInfo = async (serieId: number, seasonNumber: number) => {
   return info
 }
 
-const getSerieInfo = async (serieId: number, seasonsQuantity: number) => {
-  console.log(serieId, seasonsQuantity)
+const getSerieInfo = async (serieId: number, seasonsQuantity: number): Promise<SerieInfo> => {
   let res = await grq(`/tv/${serieId}`, true, true, true)
+
   res.seasonsData = [] as TvSeason[]
+  res.sugestions = [] as Sugestion[]
 
   if (seasonsQuantity > 0) {
     for (let i = 1; i <= seasonsQuantity; i++) {
@@ -66,6 +69,20 @@ const getSerieInfo = async (serieId: number, seasonsQuantity: number) => {
       res.seasonsData.push(sInfo as TvSeason)
     }
   }
+
+  let sugestions = await grq(`/tv/${serieId}/recommendations`) as TvSugestions
+
+  let fullSugs: Sugestion[] = []
+  const fetchFullSugestions = async () => {
+    sugestions.results.forEach(async s => {
+      let fullInfo = await getMediaDetails('tv', s.id)
+      const sugestionObj = { ...fullInfo, ...s }
+      fullSugs.push(sugestionObj)
+    })
+  }
+  await fetchFullSugestions()
+  res.sugestions.results = fullSugs
+
 
   return res
 }
@@ -95,7 +112,7 @@ const getAll = async () => {
 
     parseMediaListToUtilList(tvPopular, 'tv', 'Populares na TV'),
     parseMediaListToUtilList(tvTop_rated, 'tv', 'Bem falados na TV'),
-    parseMediaListToUtilList(tvOnTheAir, 'tv', 'Na TV') // movies and seasons
+    parseMediaListToUtilList(tvOnTheAir, 'tv', 'Na TV')
   ]
 }
 

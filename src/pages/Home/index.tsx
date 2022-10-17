@@ -14,6 +14,7 @@ import HomeFooter from '../../components/_footers/Home'
 
 import { ReactComponent as WatchIcon } from '../../assets/svgs/play.svg'
 import { ReactComponent as InfoIcon } from '../../assets/svgs/info.svg'
+import { SerieInfo } from '../../types/api/SerieInfo'
 
 
 function HomePage() {
@@ -22,7 +23,7 @@ function HomePage() {
   const [highlightMovie, setHighlightMovie] = useState<null | Movie>(null)
   const [listAll, setListAll] = useState<ListAllType[]>([])
   const [selectedToModal, setSelectedToModal] = useState<
-    null | { type: 'movie', item: Movie } | { type: 'tv', item: TvSeason }
+    null | { type: 'movie', item: Movie } | { type: 'tv', item: SerieInfo }
   >(null)
   const [showingModal, setShowingModal] = useState(false)
 
@@ -30,16 +31,11 @@ function HomePage() {
 
     if (type === 'tv') {
       let detailedMedia = await Api.get.details(type, item.id)
+      let seasonInfo: SerieInfo = await Api.get.serieInfo(item.id, detailedMedia.seasons.length)
 
-      if (detailedMedia.seasons) {
-        let seasonInfo: TvSeason = await Api.get.serieInfo(item.id, detailedMedia.seasons.length)
-        setSelectedToModal({ type: 'tv', item: seasonInfo })
-
-        toggleBodyScroll()
-        setShowingModal(true)
-      } else {
-        // setSelectedToModal({ type: 'movie', item: /*____*/ })  // its a movie. Get movieInfo as serieInfo
-      }
+      toggleBodyScroll()
+      setSelectedToModal({ type: 'tv', item: seasonInfo })
+      setShowingModal(true)
     }
   }
 
@@ -48,9 +44,7 @@ function HomePage() {
   }
 
   useEffect(() => {
-    window.addEventListener('scroll', () => {
-      setTransparentBg(!(window.scrollY > 32))
-    })
+    window.addEventListener('scroll', () => { setTransparentBg(!(window.scrollY > 32)) })
 
     const fetchData = async () => {
       const movies = await Api.get.trendingMovies()
@@ -94,7 +88,7 @@ function HomePage() {
       </S.HighLightMovie>
       {selectedToModal && showingModal &&
         <MediaModal type={'tv'}
-          item={selectedToModal.item as TvSeason}
+          item={selectedToModal.item as SerieInfo}
           toggleBodyScroll={toggleBodyScroll}
           setShowingModal={setShowingModal}
         />
