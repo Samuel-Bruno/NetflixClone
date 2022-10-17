@@ -3,7 +3,7 @@ import * as S from './styles'
 import { Movie } from '../../types/movie'
 import { TVListResult as Tv } from '../../types/Tv'
 import { getImgUrl } from "../../api/TmdbConfig"
-import { moviesCategories, TvCategories } from '../../api/TmdbCategoriesNames'
+import { MoviesCategories, TvCategories } from '../../api/TmdbCategoriesNames'
 
 import { Link } from 'react-router-dom'
 
@@ -13,15 +13,16 @@ import { ReactComponent as DislikeIcon } from '../../assets/svgs/dislike.svg'
 import { ReactComponent as LikeIcon } from '../../assets/svgs/like.svg'
 import { ReactComponent as DoubleLikeIcon } from '../../assets/svgs/double_like.svg'
 import { ReactComponent as MoreInfoIcon } from '../../assets/svgs/more_info.svg'
+import { HandleSelectMediaProps } from '../../types/handleSelectMedia'
 
 type Props = {
   type: 'movie',
   item: Movie,
-  pickMediaFn: (type: 'movie' | 'tv', item: Movie | Tv) => void
+  pickMediaFn: ({ type, item }: HandleSelectMediaProps) => void
 } | {
   type: 'tv',
   item: Tv,
-  pickMediaFn: (type: 'movie' | 'tv', item: Movie | Tv) => void
+  pickMediaFn: ({ type, item }: HandleSelectMediaProps) => void
 }
 
 
@@ -58,7 +59,7 @@ function MediaItem({ type, item, pickMediaFn }: Props) {
                 </S.RateOptions>
               </S.RateArea>
             </S.ActionsArea>
-            <S.MoreInfo>
+            <S.MoreInfo onClick={() => pickMediaFn({type, item})}>
               <MoreInfoIcon fill={'#888'} width={16} />
             </S.MoreInfo>
           </S.BtnsArea>
@@ -72,7 +73,7 @@ function MediaItem({ type, item, pickMediaFn }: Props) {
               {item.genre_ids.map((c, k) =>
                 <S.MediaCategory key={k}>
                   <span className='categoryBall'>&bull;</span>
-                  <span className='categoryTitle'>{moviesCategories.find(i => i.id === c)?.title}</span>
+                  <span className='categoryTitle'>{MoviesCategories.find(i => i.id === c)?.title}</span>
                 </S.MediaCategory>
               )}
             </S.MediaCategories>
@@ -110,7 +111,7 @@ function MediaItem({ type, item, pickMediaFn }: Props) {
                 </S.RateOptions>
               </S.RateArea>
             </S.ActionsArea>
-            <S.MoreInfo onClick={() => pickMediaFn(type, item)}>
+            <S.MoreInfo onClick={() => pickMediaFn({type, item})}>
               <MoreInfoIcon fill={'#888'} width={16} />
             </S.MoreInfo>
           </S.BtnsArea>

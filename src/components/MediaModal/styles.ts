@@ -19,6 +19,7 @@ export const PreContainer = styled.div`
   background-color:rgba(0,0,0,.6);
   display:flex;
   justify-content:center;
+  min-height:100vh;
 `
 
 export const ModalContainer = styled.div`
@@ -221,12 +222,22 @@ export const MediaData = styled.div`
 
 export const FirstRow = styled.div`
   display:flex;
-  gap:10px;
+  flex-direction:column;
+  margin-bottom:30px;
   color:white;
+`
+
+export const MovieTitle = styled.h4`
+  font-size:32px;
+  font-weight:500;
+`
+
+export const MediaFirstInfo = styled.div`
+  display:flex;
+  gap:10px;
   font-family:'Netflix Sans Rg', Helvetica Neue;
   font-size:16px;
   font-weight:300;
-  margin-bottom:30px;
   
   .interestRate {
     color:#46d369;

@@ -1,14 +1,13 @@
 import React, { useRef } from 'react'
 import * as S from './styles'
-import { Movie } from '../../types/movie'
-import { TVListResult as Tv } from '../../types/Tv'
+import { HandleSelectMediaProps } from '../../types/handleSelectMedia'
 import ListAllType from '../../types/listAll'
 
 import MediaItem from '../MediaItem'
 
 type Props = {
   ctg: ListAllType,
-  pickMediaFn: (type: 'movie' | 'tv', item: Movie | Tv) => void
+  pickMediaFn: ({ type, item }: HandleSelectMediaProps) => void
 }
 
 

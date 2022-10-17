@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import * as S from './styles'
 import { Movie } from '../../types/movie'
-import { TVListResult as Tv } from '../../types/Tv'
 import ListAllType from '../../types/listAll'
-import { TvSeason } from '../../types/TvSeason'
+import { SerieInfo } from '../../types/api/SerieInfo'
+import { HandleSelectMediaProps } from '../../types/handleSelectMedia'
+import { MovieInfo } from '../../types/Movie/MovieInfo'
 import Api from '../../api'
 
 import { Link } from 'react-router-dom'
@@ -14,7 +15,6 @@ import HomeFooter from '../../components/_footers/Home'
 
 import { ReactComponent as WatchIcon } from '../../assets/svgs/play.svg'
 import { ReactComponent as InfoIcon } from '../../assets/svgs/info.svg'
-import { SerieInfo } from '../../types/api/SerieInfo'
 
 
 function HomePage() {
@@ -22,14 +22,23 @@ function HomePage() {
   const [transparentBg, setTransparentBg] = useState(true)
   const [highlightMovie, setHighlightMovie] = useState<null | Movie>(null)
   const [listAll, setListAll] = useState<ListAllType[]>([])
-  const [selectedToModal, setSelectedToModal] = useState<
-    null | { type: 'movie', item: Movie } | { type: 'tv', item: SerieInfo }
-  >(null)
   const [showingModal, setShowingModal] = useState(false)
+  const [selectedToModal, setSelectedToModal] = useState<null |
+  { type: 'movie', item: MovieInfo } |
+  { type: 'tv', item: SerieInfo }
+  >(null)
 
-  const handleSelectTvMedia = async (type: 'movie' | 'tv', item: Movie | Tv) => {
+  const handleSelectMedia = async ({ type, item }: HandleSelectMediaProps) => {
 
-    if (type === 'tv') {
+    if (type === 'movie') {
+      let detailedMedia = await Api.get.movieInfo(item.id)
+
+      console.log(detailedMedia)
+
+      toggleBodyScroll()
+      setSelectedToModal({ type: 'movie', item: detailedMedia })
+      setShowingModal(true)
+    } else if (type === 'tv') {
       let detailedMedia = await Api.get.details(type, item.id)
       let seasonInfo: SerieInfo = await Api.get.serieInfo(item.id, detailedMedia.seasons.length)
 
@@ -87,14 +96,13 @@ function HomePage() {
         </S.MediaInfo>
       </S.HighLightMovie>
       {selectedToModal && showingModal &&
-        <MediaModal type={'tv'}
-          item={selectedToModal.item as SerieInfo}
+        <MediaModal info={selectedToModal}
           toggleBodyScroll={toggleBodyScroll}
           setShowingModal={setShowingModal}
         />
       }
       <S.CategoriesArea>
-        {listAll.map((ctg, k) => <CtgRow ctg={ctg} key={k} pickMediaFn={handleSelectTvMedia} />)}
+        {listAll.map((ctg, k) => <CtgRow ctg={ctg} key={k} pickMediaFn={handleSelectMedia} />)}
       </S.CategoriesArea>
       <HomeFooter />
     </S.Page>

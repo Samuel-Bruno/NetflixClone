@@ -2,8 +2,10 @@ import parseMediaListToUtilList from '../utils/parseMediaListToUtilList'
 import { BASE_TMDB_URL as BaseUrl, API_TOKEN } from './TmdbConfig'
 import { DetailedMedia } from '../types/api/getDetailedMedia'
 import { TvSeason } from '../types/TvSeason'
-import { BasicSugestion, Sugestion, TvSugestions } from '../types/TvSugestions'
+import { Sugestion, TvSugestions } from '../types/TvSugestions'
 import { SerieInfo } from '../types/api/SerieInfo'
+import { MovieInfo } from '../types/Movie/MovieInfo'
+import { MovieSugestions } from '../types/Movie/BasicSugestion'
 
 
 const grq = async (endpoint: string, credits: boolean = false, videos: boolean = false, images: boolean = false, params?: { title: string, value: string }[]) => {
@@ -42,7 +44,7 @@ const getAllMovies = async () => {
   }
 }
 
-const getMediaDetails = async (mediaType: string, mediaId: number): Promise<DetailedMedia> => {
+const getMediaDetails = async (mediaType: string, mediaId: number) => {
   const info = await grq(`/${mediaType}/${mediaId.toString()}`)
   return info as DetailedMedia
 }
@@ -55,6 +57,17 @@ const getFullMediaInfo = async (mediaType: string, mediaId: number) => {
 const getSeasonInfo = async (serieId: number, seasonNumber: number) => {
   const info = await grq(`/tv/${serieId}/season/${seasonNumber}`)
   return info
+}
+
+const getMovieInfo = async (movieId: number): Promise<MovieInfo> => {
+  let res = await getFullMediaInfo('movie', movieId)
+
+  let sugestions = await grq(`/movie/${movieId}/recommendations`) as MovieSugestions
+  res.sugestions = sugestions
+
+  console.log("RES.MOVIE_INFO", res)
+
+  return res
 }
 
 const getSerieInfo = async (serieId: number, seasonsQuantity: number): Promise<SerieInfo> => {
@@ -124,8 +137,9 @@ const get = {
   details: getMediaDetails,
   fullMediaInfo: getFullMediaInfo,
   seasonInfo: getSeasonInfo,
+  movieInfo: getMovieInfo,
   serieInfo: getSerieInfo,
-  genres: getGenres
+  genres: getGenres,
 }
 
 export default {

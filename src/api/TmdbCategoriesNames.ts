@@ -1,4 +1,4 @@
-export const moviesCategories = [
+export const MoviesCategories = [
   { id: 28, title: 'Ação' },
   { id: 12, title: 'Aventura' },
   { id: 16, title: 'Animação' },

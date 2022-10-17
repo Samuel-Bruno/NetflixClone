@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import * as S from './styles'
-import { Movie } from '../../types/movie'
-import { TvCategories } from '../../api/TmdbCategoriesNames'
+import { MoviesCategories, TvCategories } from '../../api/TmdbCategoriesNames'
+import { SerieInfo } from '../../types/api/SerieInfo'
+import { MovieInfo } from '../../types/Movie/MovieInfo'
 
 import { Link } from 'react-router-dom'
 import EpisodeItem from '../EpisodeItem'
@@ -13,27 +14,29 @@ import { ReactComponent as DislikeIcon } from '../../assets/svgs/dislike.svg'
 import { ReactComponent as LikeIcon } from '../../assets/svgs/like.svg'
 import { ReactComponent as DoubleLikeIcon } from '../../assets/svgs/double_like.svg'
 import { ReactComponent as CloseIcon } from '../../assets/svgs/close.svg'
-import { SerieInfo } from '../../types/api/SerieInfo'
 
 type Props = {
-  type: 'movie',
-  item: Movie,
-  toggleBodyScroll: () => void,
-  setShowingModal: (state: boolean) => void
-} | {
-  type: 'tv',
-  item: SerieInfo,
+  info: {
+    type: 'movie',
+    item: MovieInfo,
+  } | {
+    type: 'tv',
+    item: SerieInfo,
+  };
   toggleBodyScroll: () => void,
   setShowingModal: (state: boolean) => void
 }
 
 
-function MediaModal({ type, item, toggleBodyScroll, setShowingModal }: Props) {
+function MediaModal({ info, toggleBodyScroll, setShowingModal }: Props) {
+
+  const { type, item } = info
 
   const [showingSeason, setShowingSeason] = useState<null | number>(null)
   const [showingSeasonsList, setShowingSeasonsList] = useState<boolean>(false)
 
   useEffect(() => {
+    console.log(item)
     if (type === 'tv') {
       if (item.seasons[1]) setShowingSeason(item.seasons[1].id)
       else setShowingSeason(item.seasons[0].id)
@@ -53,49 +56,88 @@ function MediaModal({ type, item, toggleBodyScroll, setShowingModal }: Props) {
 
   return (type === 'movie') ? (
     <S.Wrapper>
-      <S.ModalContainer>
-        <S.Top>
-          <S.Backdrop backdropUrl={item.backdrop_path}>
-            <S.BtnsArea>
-              <S.MediaBtn>
-                <Link to={'/'}>
-                  <WatchIcon width={30} />
-                  <span>Assistir</span>
+      <S.PreContainer>
+        <S.ModalContainer>
+          <S.Top>
+            <S.Backdrop backdropUrl={item.backdrop_path}>
+              <S.BtnsArea>
+                <S.MediaBtn>
+                  <Link to={'/'}>
+                    <WatchIcon width={30} />
+                    <span>Assistir</span>
+                  </Link>
+                </S.MediaBtn>
+                <Link to={'/'} className={'addMyList'}>
+                  <MyListIcon fill={'#888'} width={16} />
                 </Link>
-              </S.MediaBtn>
-              <Link to={'/'} className={'addMyList'}>
-                <MyListIcon fill={'#888'} width={16} />
-              </Link>
-              <S.RateArea>
-                <S.RateAreaIcon className={'rateAreaIcon'}>
-                  <LikeIcon fill={'#888'} />
-                </S.RateAreaIcon>
-                <S.RateOptions>
-                  <Link to={'/'} className={'rateOption dislikeIt'}>
-                    <DislikeIcon fill={'#888'} />
-                  </Link>
-                  <Link to={'/'} className={'rateOption likeIt'}>
+                <S.RateArea>
+                  <S.RateAreaIcon className={'rateAreaIcon'}>
                     <LikeIcon fill={'#888'} />
-                  </Link>
-                  <Link to={'/'} className={'rateOption loveIt'}>
-                    <DoubleLikeIcon fill={'#888'} />
-                  </Link>
-                </S.RateOptions>
-              </S.RateArea>
-            </S.BtnsArea>
-          </S.Backdrop>
-        </S.Top>
-        <S.MediaInfo>
-          <S.MediaData>
-            <S.FirstRow></S.FirstRow>
-          </S.MediaData>
-          <S.MediaTags>.</S.MediaTags>
-        </S.MediaInfo>
-        <S.MediaEpisodes></S.MediaEpisodes>
-        <S.Sugestions></S.Sugestions>
-        <S.MediaTrailers></S.MediaTrailers>
-        <S.MediaAbout></S.MediaAbout>
-      </S.ModalContainer>
+                  </S.RateAreaIcon>
+                  <S.RateOptions>
+                    <Link to={'/'} className={'rateOption dislikeIt'}>
+                      <DislikeIcon fill={'#888'} />
+                    </Link>
+                    <Link to={'/'} className={'rateOption likeIt'}>
+                      <LikeIcon fill={'#888'} />
+                    </Link>
+                    <Link to={'/'} className={'rateOption loveIt'}>
+                      <DoubleLikeIcon fill={'#888'} />
+                    </Link>
+                  </S.RateOptions>
+                </S.RateArea>
+              </S.BtnsArea>
+              <S.CloseModalBtn onClick={handleCloseModal}>
+                <CloseIcon width={20} />
+              </S.CloseModalBtn>
+            </S.Backdrop>
+          </S.Top>
+          <S.MediaInfo>
+            <S.MediaData>
+              <S.FirstRow>
+                <S.MovieTitle>{item.title}</S.MovieTitle>
+                <S.MediaFirstInfo>
+                  <span className='interestRate'>{(item.vote_average * 10).toFixed(0)}% relevante</span>
+                  <span className='releaseDate'>{new Date(item.release_date).getFullYear()}</span>
+                </S.MediaFirstInfo>
+              </S.FirstRow>
+              <S.OverviewRow>{item.overview}</S.OverviewRow>
+            </S.MediaData>
+            <S.MediaTags>
+              <div className='tagItem'>
+                <span className='tagName'>Elenco: </span>
+                <span className='castNames'>
+                  {item.credits.cast.map((p, k) => {
+                    return (k < 7) ?
+                      `${p.original_name}${k < 7 && k < 6 ? ', ' : ''} ` :
+                      ''
+                  })}
+                </span>
+              </div>
+              <div className='tagItem'>
+                <span className='tagName'>Gêneros: </span>
+                <span className='castNames'>
+                  {item.genres.map((g, k) => {
+                    return (k < 7) ?
+                      `${MoviesCategories.find(c => c.id === g.id)?.title}${k < item.genres.length - 1 ? ', ' : ''}` :
+                      ''
+                  })}
+                </span>
+              </div>
+            </S.MediaTags>
+          </S.MediaInfo>
+          <S.Sugestions>
+            <h4>Títulos semelhantes</h4>
+            <S.SugestionsItemsArea>
+              {item.sugestions.results.map((sugestion, k) =>
+                <Sugestion type='movie' info={sugestion} key={k} />
+              )}
+            </S.SugestionsItemsArea>
+          </S.Sugestions>
+          <S.MediaTrailers></S.MediaTrailers>
+          <S.MediaAbout></S.MediaAbout>
+        </S.ModalContainer>
+      </S.PreContainer>
     </S.Wrapper>
   ) : (
     <S.Wrapper>
@@ -207,7 +249,7 @@ function MediaModal({ type, item, toggleBodyScroll, setShowingModal }: Props) {
             <h4>Títulos semelhantes</h4>
             <S.SugestionsItemsArea>
               {item.sugestions.results.map((sugestion, k) =>
-                <Sugestion info={sugestion} key={k} />
+                <Sugestion type='tv' info={sugestion} key={k} />
               )}
             </S.SugestionsItemsArea>
           </S.Sugestions>
