@@ -88,7 +88,9 @@ function HomePage() {
                 <span>Assistir</span>
               </Link>
             </S.MediaBtn>
-            <S.MediaBtn btnFor='info'>
+            <S.MediaBtn btnFor='info' onClick={() => handleSelectMedia({
+              type: 'movie', item: highlightMovie as Movie
+            })}>
               <InfoIcon width={30} />
               <span>Mais informações</span>
             </S.MediaBtn>
