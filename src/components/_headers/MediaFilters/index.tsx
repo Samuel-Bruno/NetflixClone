@@ -15,10 +15,11 @@ import { ReactComponent as InfoIcon } from '../../../assets/svgs/help_center.svg
 
 type Props = {
   transparentBg: boolean;
+  activeMenu: 'home' | 'series' | 'movies' | 'latest' | 'my-list' | 'original-audio'
 }
 
 
-function HomeHeader({ transparentBg }: Props) {
+function MediaFiltersHeader({ transparentBg, activeMenu }: Props) {
 
   const [searchBoxOpened, setSearchBoxOpened] = useState(false)
 
@@ -46,12 +47,12 @@ function HomeHeader({ transparentBg }: Props) {
         </Link>
         <S.Nav>
           <S.Menu>
-            <BrowseMenuItem title={'Início'} linkTo={`/browse`} active={true} />
-            <BrowseMenuItem title={'Séries'} linkTo={`genre/${83}`} active={false} />
-            <BrowseMenuItem title={'Filmes'} linkTo={`genre/${34399}`} active={false} />
-            <BrowseMenuItem title={'Bombando'} linkTo={`latest`} active={false} />
-            <BrowseMenuItem title={'Minha lista'} linkTo={`my-list`} active={false} />
-            <BrowseMenuItem title={'Navegar por idiomas'} linkTo={`original-audio`} active={false} />
+            <BrowseMenuItem title={'Início'} linkTo={`/browse`} active={activeMenu === 'home'} />
+            <BrowseMenuItem title={'Séries'} linkTo={`genre/${1}`} active={activeMenu === 'series'} />
+            <BrowseMenuItem title={'Filmes'} linkTo={`genre/${1}`} active={activeMenu === 'movies'} />
+            <BrowseMenuItem title={'Bombando'} linkTo={`latest`} active={activeMenu === 'latest'} />
+            <BrowseMenuItem title={'Minha lista'} linkTo={`my-list`} active={activeMenu === 'my-list'} />
+            <BrowseMenuItem title={'Navegar por idiomas'} linkTo={`original-audio`} active={activeMenu === 'original-audio'} />
           </S.Menu>
         </S.Nav>
         <S.RightMenu>
@@ -144,4 +145,4 @@ function HomeHeader({ transparentBg }: Props) {
 
 }
 
-export default HomeHeader
+export default MediaFiltersHeader

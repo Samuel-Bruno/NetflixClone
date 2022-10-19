@@ -1,15 +1,15 @@
 type Props = {
   ChooseProfilePg: JSX.Element;
-  InitialPage: JSX.Element;
+  Page: JSX.Element;
 }
 
 
-function VerifyProfilePicked({ ChooseProfilePg, InitialPage }: Props) {
+function VerifyProfilePicked({ ChooseProfilePg, Page }: Props) {
 
   const profileAlreadyPicked = true
 
 
-  return (profileAlreadyPicked) ? InitialPage : ChooseProfilePg
+  return (profileAlreadyPicked) ? Page : ChooseProfilePg
 
 }
 

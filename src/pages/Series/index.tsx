@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import * as S from './styles'
-import { Movie } from '../../types/movie'
-import ListAllType from '../../types/listAll'
 import { SerieInfo } from '../../types/api/SerieInfo'
 import { HandleSelectMediaProps } from '../../types/handleSelectMedia'
+import { Movie } from '../../types/movie'
+import ListAllType from '../../types/listAll'
 import { MovieInfo } from '../../types/Movie/MovieInfo'
 import Api from '../../api'
+import { toggleBodyScroll } from '../../utils/toggleBodyScroll'
 
+import MediaFiltersHeader from '../../components/_headers/MediaFilters'
 import { Link } from 'react-router-dom'
-import HomeHeader from '../../components/_headers/Home'
 import MediaModal from '../../components/MediaModal'
 import CtgRow from '../../components/CtgRow'
-import HomeFooter from '../../components/_footers/Main'
+import MainFooter from '../../components/_footers/Main'
 
 import { ReactComponent as WatchIcon } from '../../assets/svgs/play.svg'
 import { ReactComponent as InfoIcon } from '../../assets/svgs/info.svg'
-import { toggleBodyScroll } from '../../utils/toggleBodyScroll'
 
 
-function HomePage() {
+function SeriesPage() {
 
   const [transparentBg, setTransparentBg] = useState(true)
   const [highlightMovie, setHighlightMovie] = useState<null | Movie>(null)
@@ -67,7 +67,7 @@ function HomePage() {
 
   return (
     <S.Page>
-      <HomeHeader transparentBg={transparentBg} />
+      <MediaFiltersHeader transparentBg={transparentBg} activeMenu={'series'} />
       <S.HighLightMovie backdropUrl={highlightMovie ? highlightMovie.backdrop_path : null}>
         <S.MediaInfo>
           <S.MediaTitle>{highlightMovie?.title}</S.MediaTitle>
@@ -103,10 +103,10 @@ function HomePage() {
       <S.CategoriesArea>
         {listAll.map((ctg, k) => <CtgRow ctg={ctg} key={k} pickMediaFn={handleSelectMedia} />)}
       </S.CategoriesArea>
-      <HomeFooter />
+      <MainFooter />
     </S.Page>
   )
+
 }
 
-
-export default HomePage
+export default SeriesPage

@@ -9,7 +9,7 @@ import { ReactComponent as TwitterIcon } from '../../../assets/svgs/socialmedia_
 import { ReactComponent as YoutubeIcon } from '../../../assets/svgs/socialmedia_ytb.svg'
 
 
-function HomeFooter() {
+function MainFooter() {
 
 
   return (
@@ -99,4 +99,4 @@ function HomeFooter() {
 
 }
 
-export default HomeFooter
+export default MainFooter
