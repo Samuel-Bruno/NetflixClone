@@ -2,14 +2,12 @@ import styled from "styled-components"
 
 
 export const Wrapper = styled.header<{ transparentBg: boolean }>`
-  position:fixed;
+  position:absolute;
+  width:100%;
   top:0;
-  left:0;
-  right:0;
   background-color:${p => p.transparentBg ? 'transparent' : 'rgb(20,20,20)'};
   background-image: linear-gradient(180deg, rgba(0,0,0,.7) 10%, transparent);
   transition:background-color .3s;
-  z-index:100;
 `
 
 export const Container = styled.div`

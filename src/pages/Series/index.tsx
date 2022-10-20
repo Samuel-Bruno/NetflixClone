@@ -16,6 +16,7 @@ import MainFooter from '../../components/_footers/Main'
 
 import { ReactComponent as WatchIcon } from '../../assets/svgs/play.svg'
 import { ReactComponent as InfoIcon } from '../../assets/svgs/info.svg'
+import SubHeader from '../../components/SubHeaders'
 
 
 function SeriesPage() {
@@ -68,6 +69,7 @@ function SeriesPage() {
   return (
     <S.Page>
       <MediaFiltersHeader transparentBg={transparentBg} activeMenu={'series'} />
+      <SubHeader page={'series'} />
       <S.HighLightMovie backdropUrl={highlightMovie ? highlightMovie.backdrop_path : null}>
         <S.MediaInfo>
           <S.MediaTitle>{highlightMovie?.title}</S.MediaTitle>
