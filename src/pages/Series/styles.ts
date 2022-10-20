@@ -33,7 +33,7 @@ export const MediaInfo = styled.div`
   flex-direction:column;
   justify-content:flex-end;
   background-image: linear-gradient(90deg, rgba(0,0,0,.8) 20%, transparent);
-  padding:0 calc((100vw - 1260px) / 2) 17%;
+  padding:0 calc((100vw - 1260px) / 2) 14%;
   gap:22px;
 `
 
@@ -53,6 +53,8 @@ export const RateMedia = styled.span`
 `
 
 export const MediaYear = styled.span``
+
+export const MediaSeasons = styled.span``
 
 export const MediaOverview = styled.h2`
   font-size:18px;

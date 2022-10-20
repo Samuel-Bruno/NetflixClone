@@ -1,3 +1,4 @@
+import { DetailedMedia } from "./api/getDetailedMedia";
 import { Movie } from "./movie"
 import { TVListResult as Tv } from "./Tv"
 
@@ -6,5 +7,5 @@ export type HandleSelectMediaProps = {
   item: Movie;
 } | {
   type: 'tv';
-  item: Tv;
+  item: Tv | DetailedMedia;
 }

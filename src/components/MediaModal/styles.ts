@@ -227,9 +227,11 @@ export const FirstRow = styled.div`
   color:white;
 `
 
-export const MovieTitle = styled.h4`
+export const MediaTitle = styled.h4`
   font-size:32px;
   font-weight:500;
+  color:white;
+  margin-bottom:10px;
 `
 
 export const MediaFirstInfo = styled.div`

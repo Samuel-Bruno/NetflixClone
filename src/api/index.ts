@@ -6,6 +6,7 @@ import { Sugestion, TvSugestions } from '../types/TvSugestions'
 import { SerieInfo } from '../types/api/SerieInfo'
 import { MovieInfo } from '../types/Movie/MovieInfo'
 import { MovieSugestions } from '../types/Movie/BasicSugestion'
+import { TVListResult as Serie } from '../types/Tv'
 
 
 const grq = async (endpoint: string, credits: boolean = false, videos: boolean = false, images: boolean = false, params?: { title: string, value: string }[]) => {
@@ -129,10 +130,35 @@ const getAll = async () => {
   ]
 }
 
+const getAllSeries = async () => {
+
+  const tvPopular = await grq('/tv/popular')
+  const tvTop_rated = await grq('/tv/top_rated')
+  const tvOnTheAir = await grq('/tv/on_the_air')
+
+  const categories = [tvPopular, tvTop_rated, tvOnTheAir]
+  const randomCategory = Math.ceil(Math.random() * categories.length - 1)
+
+  const randomOne: Serie = categories[randomCategory]
+    .results[Math.ceil(Math.random() * categories[randomCategory].results.length - 1)]
+
+  const highlight = await getMediaDetails('tv', randomOne.id)
+
+  return {
+    categories: [
+      parseMediaListToUtilList(tvPopular, 'tv', 'Populares'),
+      parseMediaListToUtilList(tvTop_rated, 'tv', 'Bem falados'),
+      parseMediaListToUtilList(tvOnTheAir, 'tv', 'Passando na TV'),
+    ],
+    highlight
+  }
+}
+
 
 const get = {
   all: getAll,
   allMovies: getAllMovies,
+  allSeries: getAllSeries,
   trendingMovies: () => grq('/movie/top_rated'),
   details: getMediaDetails,
   fullMediaInfo: getFullMediaInfo,

@@ -17,12 +17,14 @@ import MainFooter from '../../components/_footers/Main'
 import { ReactComponent as WatchIcon } from '../../assets/svgs/play.svg'
 import { ReactComponent as InfoIcon } from '../../assets/svgs/info.svg'
 import SubHeader from '../../components/SubHeaders'
+import { TVListResult as Serie, TVListResult } from '../../types/Tv'
+import { DetailedMedia } from '../../types/api/getDetailedMedia'
 
 
 function SeriesPage() {
 
   const [transparentBg, setTransparentBg] = useState(true)
-  const [highlightMovie, setHighlightMovie] = useState<null | Movie>(null)
+  const [highlightSerie, setHighlightSerie] = useState<null | DetailedMedia>(null)
   const [listAll, setListAll] = useState<ListAllType[]>([])
   const [showingModal, setShowingModal] = useState(false)
   const [selectedToModal, setSelectedToModal] = useState<null |
@@ -54,32 +56,34 @@ function SeriesPage() {
     window.addEventListener('scroll', () => { setTransparentBg(!(window.scrollY > 32)) })
 
     const fetchData = async () => {
-      const movies = await Api.get.trendingMovies()
-      const all = await Api.get.all()
+      const all = await Api.get.allSeries()
 
-      setHighlightMovie(movies.results[
-        Math.ceil(Math.random() * movies.results.length - 1)
-      ])
-      setListAll(all)
+      setHighlightSerie(all.highlight)
+      setListAll(all.categories)
     }
     fetchData()
-  }, [setHighlightMovie])
+  }, [setHighlightSerie])
 
 
   return (
     <S.Page>
       <MediaFiltersHeader transparentBg={transparentBg} activeMenu={'series'} />
       <SubHeader page={'series'} />
-      <S.HighLightMovie backdropUrl={highlightMovie ? highlightMovie.backdrop_path : null}>
+      <S.HighLightMovie backdropUrl={highlightSerie ? highlightSerie.backdrop_path : null}>
         <S.MediaInfo>
-          <S.MediaTitle>{highlightMovie?.title}</S.MediaTitle>
+          <S.MediaTitle>{highlightSerie?.name}</S.MediaTitle>
           <S.MediaInterestingData>
-            <S.RateMedia>{highlightMovie?.vote_average} pontos</S.RateMedia>
+            <S.RateMedia>{(highlightSerie?.vote_average.toFixed(1))} pontos</S.RateMedia>
             <S.MediaYear>
-              {new Date(highlightMovie?.release_date as string).getFullYear()}
+              {new Date(highlightSerie?.first_air_date as string).getFullYear()}
             </S.MediaYear>
+            {highlightSerie?.number_of_seasons &&
+              <S.MediaSeasons>
+                {`${highlightSerie.number_of_seasons} temporada${highlightSerie.number_of_seasons > 1 ? 's' : ''}`}
+              </S.MediaSeasons>
+            }
           </S.MediaInterestingData>
-          <S.MediaOverview>{highlightMovie?.overview}</S.MediaOverview>
+          <S.MediaOverview>{highlightSerie?.overview}</S.MediaOverview>
           <S.ButtonsArea>
             <S.MediaBtn btnFor='watch'>
               <Link to={'/'}>
@@ -88,7 +92,7 @@ function SeriesPage() {
               </Link>
             </S.MediaBtn>
             <S.MediaBtn btnFor='info' onClick={() => handleSelectMedia({
-              type: 'movie', item: highlightMovie as Movie
+              type: 'tv', item: highlightSerie as DetailedMedia
             })}>
               <InfoIcon width={30} />
               <span>Mais informações</span>

@@ -95,7 +95,7 @@ function MediaModal({ info, toggleBodyScroll, setShowingModal }: Props) {
           <S.MediaInfo>
             <S.MediaData>
               <S.FirstRow>
-                <S.MovieTitle>{item.title}</S.MovieTitle>
+                <S.MediaTitle>{item.title}</S.MediaTitle>
                 <S.MediaFirstInfo>
                   <span className='interestRate'>{(item.vote_average * 10).toFixed(0)}% relevante</span>
                   <span className='releaseDate'>{new Date(item.release_date).getFullYear()}</span>
@@ -180,11 +180,14 @@ function MediaModal({ info, toggleBodyScroll, setShowingModal }: Props) {
           <S.MediaInfo>
             <S.MediaData>
               <S.FirstRow>
-                <span className='interestRate'>{(item.vote_average * 10).toFixed(0)}% relevante</span>
-                <span className='releaseDate'>{new Date(item.last_air_date).getFullYear()}</span>
-                <span className='seasonsQnt'>
-                  {`${item.number_of_seasons} temporada${item.number_of_seasons > 1 ? 's' : ''}`}
-                </span>
+                <S.MediaTitle>{item.name}</S.MediaTitle>
+                <S.MediaFirstInfo>
+                  <span className='interestRate'>{(item.vote_average * 10).toFixed(0)}% relevante</span>
+                  <span className='releaseDate'>{new Date(item.last_air_date).getFullYear()}</span>
+                  <span className='seasonsQnt'>
+                    {`${item.number_of_seasons} temporada${item.number_of_seasons > 1 ? 's' : ''}`}
+                  </span>
+                </S.MediaFirstInfo>
               </S.FirstRow>
               <S.OverviewRow>{item.overview}</S.OverviewRow>
             </S.MediaData>
