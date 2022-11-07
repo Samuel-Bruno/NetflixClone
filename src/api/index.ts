@@ -7,6 +7,7 @@ import { SerieInfo } from '../types/api/SerieInfo'
 import { MovieInfo } from '../types/Movie/MovieInfo'
 import { MovieSugestions } from '../types/Movie/BasicSugestion'
 import { TVListResult as Serie } from '../types/Tv'
+import { Movie } from '../types/movie'
 
 
 const grq = async (endpoint: string, credits: boolean = false, videos: boolean = false, images: boolean = false, params?: { title: string, value: string }[]) => {
@@ -34,14 +35,24 @@ const grq = async (endpoint: string, credits: boolean = false, videos: boolean =
 }
 
 const getAllMovies = async () => {
-  const latest = await grq('/movie/latest')
-  const popular = await grq('/movie/popular')
-  const top_rated = await grq('/movie/top_rated')
+  const now_playingRq = grq('/movie/now_playing')
+  const popularRq = grq('/movie/popular')
+  const top_ratedRq = grq('/movie/top_rated')
+
+  const categories = [
+    parseMediaListToUtilList(await now_playingRq, 'movie', 'Passando agora'),
+    parseMediaListToUtilList(await popularRq, 'movie', 'Filmes populares'),
+    parseMediaListToUtilList(await top_ratedRq, 'movie', 'Bem Falados'),
+  ]
+  const randomCategory = Math.ceil(Math.random() * categories.length - 1)
+  const randomOne: Movie = categories[randomCategory]
+    .results[Math.ceil(Math.random() * categories[randomCategory].results.length - 1)]
+
+  const highlight = await getFullMediaInfo('movie', randomOne.id)
 
   return {
-    latest,
-    popular,
-    top_rated
+    categories,
+    highlight
   }
 }
 
@@ -65,8 +76,6 @@ const getMovieInfo = async (movieId: number): Promise<MovieInfo> => {
 
   let sugestions = await grq(`/movie/${movieId}/recommendations`) as MovieSugestions
   res.sugestions = sugestions
-
-  console.log("RES.MOVIE_INFO", res)
 
   return res
 }

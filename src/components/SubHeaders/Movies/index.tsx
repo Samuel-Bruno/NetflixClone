@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import * as S from './styles'
-import { TvCategories } from '../../../api/TmdbCategoriesNames'
+import { MoviesCategories } from '../../../api/TmdbCategoriesNames'
 
 import { Link } from 'react-router-dom'
 
@@ -8,7 +8,7 @@ import { ReactComponent as ListModeIcon } from '../../../assets/svgs/list_mode.s
 import { ReactComponent as GridModeIcon } from '../../../assets/svgs/grid_mode.svg'
 
 
-function SeriesSubHeader() {
+function MoviesSubHeader() {
 
   const headerEl = useRef<HTMLDivElement | null>(null)
   const [showingCategories, setShowingCategories] = useState(false)
@@ -34,13 +34,13 @@ function SeriesSubHeader() {
       <S.PreContainer>
         <S.Container>
           <S.Left>
-            <S.Title>Séries</S.Title>
+            <S.Title>Filmes</S.Title>
             <S.FilterSeriesArea>
               <S.FilterBtn onClick={() => setShowingCategories(!showingCategories)}>
                 Gêneros
               </S.FilterBtn>
               <S.FiltersItems showing={showingCategories}>
-                {TvCategories.map((c, k) => (
+                {MoviesCategories.map((c, k) => (
                   <Link to={``} key={k}>{c.title}</Link>
                 ))}
               </S.FiltersItems>
@@ -67,4 +67,4 @@ function SeriesSubHeader() {
 
 }
 
-export default SeriesSubHeader
+export default MoviesSubHeader

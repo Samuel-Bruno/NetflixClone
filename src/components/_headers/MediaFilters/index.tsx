@@ -48,11 +48,11 @@ function MediaFiltersHeader({ transparentBg, activeMenu }: Props) {
         <S.Nav>
           <S.Menu>
             <BrowseMenuItem title={'Início'} linkTo={`/browse`} active={activeMenu === 'home'} />
-            <BrowseMenuItem title={'Séries'} linkTo={`genre/${1}`} active={activeMenu === 'series'} />
-            <BrowseMenuItem title={'Filmes'} linkTo={`genre/${1}`} active={activeMenu === 'movies'} />
-            <BrowseMenuItem title={'Bombando'} linkTo={`latest`} active={activeMenu === 'latest'} />
-            <BrowseMenuItem title={'Minha lista'} linkTo={`my-list`} active={activeMenu === 'my-list'} />
-            <BrowseMenuItem title={'Navegar por idiomas'} linkTo={`original-audio`} active={activeMenu === 'original-audio'} />
+            <BrowseMenuItem title={'Séries'} linkTo={`/browse/genre/83`} active={activeMenu === 'series'} />
+            <BrowseMenuItem title={'Filmes'} linkTo={`/browse/genre/34399`} active={activeMenu === 'movies'} />
+            <BrowseMenuItem title={'Bombando'} linkTo={`/browse/latest`} active={activeMenu === 'latest'} />
+            <BrowseMenuItem title={'Minha lista'} linkTo={`/browse/my-list`} active={activeMenu === 'my-list'} />
+            <BrowseMenuItem title={'Navegar por idiomas'} linkTo={`/browse/original-audio`} active={activeMenu === 'original-audio'} />
           </S.Menu>
         </S.Nav>
         <S.RightMenu>

@@ -5,6 +5,7 @@ import ChooseProfilePage from '../pages/ChooseProfile'
 import HomePage from '../pages/Home'
 import SeriesPage from '../pages/Series'
 import VerifyProfilePicked from './VerifyProfilePicked'
+import MoviesPage from '../pages/Movies'
 
 
 const AppRoutes = () => {
@@ -21,12 +22,9 @@ const AppRoutes = () => {
         <Route path='genre/83' element={
           <VerifyProfilePicked ChooseProfilePg={<ChooseProfilePage />} Page={<SeriesPage />} />
         } />
-        {/* <Route path='genre/34399' element={
-          <VerifyProfilePicked ChooseProfilePg={<ChooseProfilePage />} Page={<SeriesPage />} />
-        } /> */}
-        {/* <Route path='genre/34399' element={
-          <VerifyProfilePicked ChooseProfilePg={<ChooseProfilePage />} Page={<SeriesPage />} />
-        } /> */}
+        <Route path='genre/34399' element={
+          <VerifyProfilePicked ChooseProfilePg={<ChooseProfilePage />} Page={<MoviesPage />} />
+        } />
         {/* <Route path='latest' element={
           <VerifyProfilePicked ChooseProfilePg={<ChooseProfilePage />} Page={} />
         } /> */}
