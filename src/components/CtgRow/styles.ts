@@ -36,9 +36,9 @@ export const ItemsArea = styled.div`
   }
 `
 
-export const ItemsContent = styled.div`
+export const ItemsContent = styled.div<{topTen:boolean}>`
   display:flex;
-  gap:20px;
+  gap:${p => p.topTen ? '90px' : '20px'};
   transition:margin-left .6s;
 `
 

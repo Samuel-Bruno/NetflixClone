@@ -163,6 +163,40 @@ const getAllSeries = async () => {
   }
 }
 
+const getNewMovies = async () => {
+  const newMoviesRq = grq('/movie/now_playing')
+  const moviesResults = await newMoviesRq
+  return parseMediaListToUtilList(moviesResults, 'movie', 'Novidades')
+}
+
+const getUpcomingMovies = async () => {
+  const upcomingMoviesRq = grq('/movie/upcoming')
+  const upcomingMovies = await upcomingMoviesRq
+  return parseMediaListToUtilList(upcomingMovies, 'movie', 'Vale a pena esperar')
+}
+
+const getTopTenMovies = async () => {
+  const popularMoviesRq = await grq('/movie/popular')
+  const parsedList = parseMediaListToUtilList(popularMoviesRq, 'movie', 'Top 10 Filmes Populares')
+  const res = {
+    ...parsedList,
+    results: parsedList.results.slice(0, 10)
+  }
+
+  return res
+}
+
+const getTopTenTv = async () => {
+  const popularSeriesRq = await grq('/tv/popular')
+  const parsedList = parseMediaListToUtilList(popularSeriesRq, 'tv', 'Top 10 Séries Populares')
+  const res = {
+    ...parsedList,
+    results: parsedList.results.slice(0, 10)
+  }
+
+  return res
+}
+
 
 const get = {
   all: getAll,
@@ -175,6 +209,10 @@ const get = {
   movieInfo: getMovieInfo,
   serieInfo: getSerieInfo,
   genres: getGenres,
+  newMovies: getNewMovies,
+  upcomingMovies: getUpcomingMovies,
+  topTenMovies: getTopTenMovies,
+  topTenSeries: getTopTenTv,
 }
 
 export default {

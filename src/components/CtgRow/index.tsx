@@ -1,17 +1,19 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import * as S from './styles'
 import { HandleSelectMediaProps } from '../../types/handleSelectMedia'
 import ListAllType from '../../types/listAll'
 
 import MediaItem from '../MediaItem'
+import TopTenItem from '../TopTenItem'
 
 type Props = {
   ctg: ListAllType,
-  pickMediaFn: ({ type, item }: HandleSelectMediaProps) => void
+  pickMediaFn: ({ type, item }: HandleSelectMediaProps) => void,
+  topTen?: boolean
 }
 
 
-function CtgRow({ ctg, pickMediaFn }: Props) {
+function CtgRow({ ctg, pickMediaFn, topTen = false }: Props) {
 
   const ItemsAreaRef = useRef<HTMLDivElement | null>(null)
 
@@ -55,9 +57,12 @@ function CtgRow({ ctg, pickMediaFn }: Props) {
         <S.ItemsAreaLeftBtn className='scrollIndicator'
           onClick={handleToLeftScroll}
         />
-        <S.ItemsContent ref={ItemsAreaRef}>
-          {ctg.results.map((item, k) => (
+        <S.ItemsContent ref={ItemsAreaRef} topTen={topTen === true}>
+          {!topTen && ctg.results.map((item, k) => (
             <MediaItem type={ctg.type} item={item} key={k} pickMediaFn={pickMediaFn} />
+          ))}
+          {topTen && ctg.results.map((item, k) => (
+            <TopTenItem type={ctg.type} item={item} key={k} pickMediaFn={pickMediaFn} rankNumber={k + 1} />
           ))}
         </S.ItemsContent>
         <S.ItemsAreaRightBtn className='scrollIndicator'

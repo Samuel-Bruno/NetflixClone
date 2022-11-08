@@ -47,9 +47,7 @@ function MoviesPage() {
 
     const fetchData = async () => {
       const all = await Api.get.allMovies()
-
-      console.log("All - ", all.categories)
-
+      
       setHighlightMovie(all.highlight)
       setListAll(all.categories)
     }

@@ -35,8 +35,6 @@ function SeriesPage() {
     if (type === 'movie') {
       let detailedMedia = await Api.get.movieInfo(item.id)
 
-      console.log(detailedMedia)
-
       toggleBodyScroll()
       setSelectedToModal({ type: 'movie', item: detailedMedia })
       setShowingModal(true)
