@@ -50,8 +50,8 @@ function HomeHeader({ transparentBg }: Props) {
             <BrowseMenuItem title={'Séries'} linkTo={`genre/${83}`} active={false} />
             <BrowseMenuItem title={'Filmes'} linkTo={`genre/${34399}`} active={false} />
             <BrowseMenuItem title={'Bombando'} linkTo={`latest`} active={false} />
-            <BrowseMenuItem title={'Minha lista'} linkTo={`my-list`} active={false} />
-            <BrowseMenuItem title={'Navegar por idiomas'} linkTo={`original-audio`} active={false} />
+            <BrowseMenuItem title={'Minha lista'} linkTo={`/browse`} active={false} />
+            <BrowseMenuItem title={'Navegar por idiomas'} linkTo={`/browse`} active={false} />
           </S.Menu>
         </S.Nav>
         <S.RightMenu>

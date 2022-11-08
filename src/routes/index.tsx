@@ -7,6 +7,7 @@ import SeriesPage from '../pages/Series'
 import VerifyProfilePicked from './VerifyProfilePicked'
 import MoviesPage from '../pages/Movies'
 import LatestPage from '../pages/Latest'
+import SignOut from '../pages/SignOut'
 
 
 const AppRoutes = () => {
@@ -36,6 +37,9 @@ const AppRoutes = () => {
           <VerifyProfilePicked ChooseProfilePg={<ChooseProfilePage />} Page={} />
         } /> */}
       </Route>
+      <Route path='/SignOut' element={
+        <VerifyProfilePicked ChooseProfilePg={<ChooseProfilePage />} Page={<SignOut />} />
+      } />
     </Routes>
   )
 
